@@ -54,13 +54,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"[Huskyasda] pre-commit\""
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.jsx *.js": [
-      "npm run lint:fix",
-      "git add"
+    "*.jsx": [
+      "npm run lint",
+      "git add ."
     ]
   }
 }
