@@ -1,60 +1,46 @@
-import React, {useState} from "react";
-import './menu.css';
+import React from "react";
+import styles from './menu.module.scss';
+import userImage from '../images/user__image.jpg';
 
 function Menu() {
-    const [isActiveMenu, setActiveMenu] = useState(true);
-    const buttonLabel = isActiveMenu ? "Закрыть меню" : "Открыть меню";
-
-    const handleMenu = () => {
-        setActiveMenu(!isActiveMenu);
-    }
-    const handleKeyDown = (event) => {
-        if (event.key === 'ArrowLeft') {
-            setActiveMenu(false);
-        } else if(event.key === 'ArrowRight') {
-            setActiveMenu(true);
-        }
-    }
     return (
-        <div className={`menu ${!isActiveMenu && 'menu_hidden'}`}>
-            <div
-                className={isActiveMenu ? 'menu__hidden-icon' : 'menu__open-icon'}
-                onClick={handleMenu}
-                onKeyDown={handleKeyDown}
-                role="button"
-                tabIndex={0} // Allow element to be focused
-                aria-label={buttonLabel} // Добавлен атрибут aria-label для связи с элементом управления//
-            />
-            <div className={`menu__container ${!isActiveMenu && 'menu_text-opacity'}`}>
-                <h1 className='menu__title'>Основное</h1>
-                <nav className='menu__nav'>
-                    <ul className='menu__list'>
-                        <li className='menu__item menu__item_active'>
-                            <div className='menu__icon-users'/>
-                            <p className='menu__text'>Клиенты</p>
+        <div className={styles.menu}>
+            <div className={styles.menu__container}>
+                <div className={styles.logo}>
+                    <div className={styles.logo__icon}/>
+                    <p className={styles.logo__text}>LOGO</p>
+                </div>
+                <div className={styles.user}>
+                    <img className={styles.user__image} src={userImage} alt='картинка профиля'/>
+                    <div className={styles.user__info}>
+                        <p className={styles.user__name}>Любовь Светлова</p>
+                        <p className={styles.user__role}>Администратор</p>
+                    </div>
+                </div>
+                <menu className={styles.menu__nav}>
+                    <ul className={styles.menu__list}>
+                        <li className={`${styles.menu__item} ${styles.menu__item_active}`}>
+                            <div className={styles.menu__iconCustmer}/>
+                            <p className={styles.menu__text}>Клиенты</p>
                         </li>
-                        <li className='menu__item'>
-                            <div className='menu__icon-briefcase'/>
-                            <p className='menu__text'>Лояльность</p>
+                        <li className={styles.menu__item}>
+                            <div className={styles.menu__iconCards}/>
+                            <p className={styles.menu__text}>Карты</p>
                         </li>
-                        <li className='menu__item'>
-                            <div className='menu__icon-users'/>
-                            <p className='menu__text'>Карты</p>
+                        <li className={styles.menu__item}>
+                            <div className={styles.menu__iconProfile}/>
+                            <p className={styles.menu__text}>Аккаунт</p>
                         </li>
-                        <li className='menu__item'>
-                            <div className='menu__icon-users'/>
-                            <p className='menu__text'>Уровни</p>
-                        </li>
-                        <li className='menu__item'>
-                            <div className='menu__icon-users'/>
-                            <p className='menu__text'>Аккаунт</p>
-                        </li>
-                        <li className='menu__item'>
-                            <div className='menu__icon-users'/>
-                            <p className='menu__text'>Баланс</p>
+                        <li className={styles.menu__item}>
+                            <div className={styles.menu__iconExit}/>
+                            <p className={`${styles.menu__text} ${styles.menu__text_exit}`}>Выйти</p>
                         </li>
                     </ul>
-                </nav>
+                </menu>
+            </div>
+            <div>
+                <p className={styles.telephoneText}>Нужна помощь? Звоните</p>
+                <a className={styles.telephoneContact} href='tel:+79002541414'>8(900)254-14-14</a>
             </div>
         </div>
     )
