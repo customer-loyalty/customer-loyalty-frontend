@@ -1,0 +1,59 @@
+.table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0px;
+  border-radius: 24px;
+  overflow: hidden;
+  color: #1e1d1d;
+}
+.header__row {
+  height: 88px;
+  background-color: #cddcec;
+}
+.header__data {
+  padding: 0px;
+  padding-right: 4px;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  max-width: 125px;
+  text-overflow: ellipsis;
+  /* Не понятно до конца нужно ставить многоточие или перенос на следующую строку */
+  /* white-space: nowrap; */
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.header__data:first-child {
+  padding-left: 20px;
+}
+.header__data:last-child {
+  padding-right: 20px;
+}
+.content__row {
+  height: 48px;
+  background-color: #ffffff;
+  transition: 0.3s;
+}
+.content__row:hover {
+  background-color: #f2f1fe;
+}
+.content__data {
+  padding: 0px;
+  padding-right: 4px;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 125px;
+  min-width: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content__data:first-child {
+  padding-left: 20px;
+}
+.content__data:last-child {
+  padding-right: 20px;
+}
