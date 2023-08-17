@@ -6,6 +6,16 @@
   overflow: hidden;
   color: #1e1d1d;
 }
+@media screen and (orientation: landscape) {
+  .table {
+    width: 100%;
+  }
+}
+@media screen and (orientation: portrait) {
+  .table {
+    height: 100%;
+  }
+}
 .header__row {
   height: 88px;
   background-color: #cddcec;
@@ -13,10 +23,11 @@
 .header__data {
   padding: 0px;
   padding-right: 4px;
-  font-family: "Roboto";
+  font-family: "Roboto", "Inter", "Arial", "sans-serif";
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 24px;
+  letter-spacing: 0.02em;
   max-width: 125px;
   text-overflow: ellipsis;
   /* Не понятно до конца нужно ставить многоточие или перенос на следующую строку */
@@ -41,10 +52,11 @@
 .content__data {
   padding: 0px;
   padding-right: 4px;
-  font-family: "Roboto";
+  font-family: "Roboto", "Inter", "Arial", "sans-serif";
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  letter-spacing: 0.02em;
   max-width: 125px;
   min-width: none;
   text-overflow: ellipsis;
