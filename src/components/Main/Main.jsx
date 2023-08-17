@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Main.module.scss";
-import TableClients from "../TableClients/TableClients";
+// import TableClients from "../TableClients/TableClients";
+import TableClientsV2 from "../TableClients/TableClientsV2";
 import addIcon from "../../images/icon_plus.svg";
 
 function Main() {
@@ -14,7 +15,8 @@ function Main() {
       </div>
       <div className={styles.main__table}>
         <p className={styles.main__clientCounter}>Всего клиентов: 3</p>
-        <TableClients />
+        {/* <TableClients /> */}
+        <TableClientsV2 />
       </div>
     </main>
   );
