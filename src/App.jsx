@@ -1,8 +1,8 @@
 import React from "react";
-import Menu from "./components/Menu";
+import LKContainer from "./components/LKCointainer/LKContainer";
 
 function App() {
-  return <Menu />
+  return <LKContainer />;
 }
 
 export default App;
