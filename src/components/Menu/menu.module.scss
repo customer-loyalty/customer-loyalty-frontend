@@ -35,8 +35,11 @@
   display: flex;
   flex-direction: column;
   row-gap: 60px;
+  height: 100%;
+  position: relative;
   @media screen and (max-width: 390px){
     row-gap: 20px;
+    height: 100%;
   }
 }
 
@@ -53,6 +56,7 @@
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;
+  transition: opacity 1.6s ease;
   @media screen and (max-width: 390px){
     width: 28px;
     height: 28px;
@@ -179,14 +183,17 @@
   background-image: url("../../images/icon_exit.svg");
 }
 .telephoneInfo{
+  position: absolute;
+  bottom: 0;
   @media screen and (max-width: 390px){
+    position: relative;
+    transition: opacity 4.4s ease-in;
     margin-left: calc(32px - 16px);
   }
 }
 .telephoneText {
   margin: 0;
   color: var(--primary-white, #fff);
-  /* text */
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -203,34 +210,59 @@
   letter-spacing: 0.48px;
   text-decoration: none;
 }
-.menu__exitBurger{
-  transition: 2s ease;
+.menu__footer{
+  position: absolute;
+  bottom: 0;
   display: none;
   @media screen and (max-width: 390px){
     display: block;
+    width: 100%;
+  }
+}
+.menu__exitBurger{
+  @media screen and (max-width: 390px){
     width: 44px;
     height: 44px;
     background-image: url("../../images/icon_burger-line.svg");
-
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 10px auto 0;
-    transition: all 0.5s ease-in-out; /* Плавная анимация */
+    margin: 0 auto;
   }
+}
+.menu__footerContainer{
+  display: flex;
+  align-items: center;
+  column-gap: 113.5px;
+  cursor: pointer;
+}
+.menu__footerLogo{
+  background-image: url("../../images/google-wallet.png");
+  width: 28px;
+  height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  visibility: hidden;
+}
+.menu__footerLogo_visible{
+  visibility: visible;
 }
 .menu__openBurger {
   background-image: url("../../images/icon_burger.svg");
-  transition: all 0.5s ease-in-out; /* Плавная анимация */
 }
 
 .menu_none{
   display: none;
 }
-.menu_opacity{
-  transition: all 1.6s ease;
+.menu__user_opacity{
+  transition: opacity 1.3s ease;
   opacity: 0;
 }
-.menu_opacityFast{
-  transition: all 0.6s ease-out;
+.menu__nav_opacity{
+  transition: opacity 0.6s ease-out;
+  opacity: 0;
+}
+.menu__telephoneInfo_opacity{
+  transition: opacity 0.3s ease-out;
   opacity: 0;
 }
