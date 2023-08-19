@@ -1,21 +1,23 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect, useMemo } from "react";
+// import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { useTable } from "react-table";
 import styles from "./TableClients.module.css";
 import CLIENTS from "../../utils/clients.json";
 
-export default function TableClientsV2() {
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  console.log(width);
+export default function TableClientsMobile() {
+  // const [width, setWidth] = useState(window.innerWidth);
+  // useEffect(() => {
+  //   const handleResize = (event) => {
+  //     setWidth(event.target.innerWidth);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+  // console.log(width <= 1000);
   const COLUMNS = [
     {
       Header: "Дата регистрации",
@@ -74,11 +76,12 @@ export default function TableClientsV2() {
     data,
   });
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const { getTableProps, getTableBodyProps } = tableInstance;
+  console.log(tableInstance);
   return (
     <table className={styles.table} {...getTableProps()}>
-      <thead className={styles.header}>
+      {/* <thead className={styles.header}>
         {headerGroups.map((headerGroup) => (
           <tr
             className={styles.header__row}
@@ -91,8 +94,8 @@ export default function TableClientsV2() {
             ))}
           </tr>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
+      </thead> */}
+      {/* <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           return (
@@ -105,6 +108,9 @@ export default function TableClientsV2() {
             </tr>
           );
         })}
+      </tbody> */}
+      <tbody {...getTableBodyProps()}>
+        <th>h</th>
       </tbody>
     </table>
   );

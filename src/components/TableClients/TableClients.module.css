@@ -6,7 +6,7 @@
   overflow: hidden;
   color: #1e1d1d;
 }
-@media screen and (orientation: landscape) {
+/* @media screen and (orientation: landscape) {
   .table {
     width: 100%;
   }
@@ -15,7 +15,7 @@
   .table {
     height: 100%;
   }
-}
+} */
 .header__row {
   height: 88px;
   background-color: #cddcec;

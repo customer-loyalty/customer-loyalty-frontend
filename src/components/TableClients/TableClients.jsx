@@ -1,43 +1,112 @@
-import React from "react";
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useState, useEffect, useMemo } from "react";
+import { useTable } from "react-table";
 import styles from "./TableClients.module.css";
-import clients from "../../utils/clients.json";
+import CLIENTS from "../../utils/clients.json";
 
 export default function TableClients() {
-  const res = clients.clients.map((item) => (
-    <tr className={styles.content__row} key={item.id}>
-      <td className={styles.content__data}>{item.reg}</td>
-      <td className={styles.content__data}>{item.phone}</td>
-      <td className={styles.content__data}>{item.cardId}</td>
-      <td className={styles.content__data}>{item.cardType}</td>
-      <td className={styles.content__data}>{item.telegram}</td>
-      <td className={styles.content__data}>{item.gender}</td>
-      <td className={styles.content__data}>{item.surname}</td>
-      <td className={styles.content__data}>{item.name}</td>
-      <td className={styles.content__data}>{item.middleName}</td>
-      <td className={styles.content__data}>{item.birthday}</td>
-      <td className={styles.content__data}>{item.bonusBalance}</td>
-      <td className={styles.content__data}>{item.note || "-"}</td>
-    </tr>
-  ));
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = (event) => {
+      setWidth(event.target.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  console.log(width);
+  const COLUMNS = [
+    {
+      Header: "Дата регистрации",
+      accessor: "reg",
+    },
+    {
+      Header: "Телефон",
+      accessor: "phone",
+    },
+    {
+      Header: "Номер карты",
+      accessor: "cardId",
+    },
+    {
+      Header: "Тип карты",
+      accessor: "cardType",
+    },
+    {
+      Header: "Телеграм",
+      accessor: "telegram",
+    },
+    {
+      Header: "Пол",
+      accessor: "gender",
+    },
+    {
+      Header: "Фамилия",
+      accessor: "surname",
+    },
+    {
+      Header: "Имя",
+      accessor: "name",
+    },
+    {
+      Header: "Отчество",
+      accessor: "middleName",
+    },
+    {
+      Header: "Дата рождения",
+      accessor: "birthday",
+    },
+    {
+      Header: "Бонусный баланс",
+      accessor: "bonusBalance",
+    },
+    {
+      Header: "Примечание",
+      accessor: "note",
+    },
+  ];
+
+  const columns = useMemo(() => COLUMNS, []);
+  const data = useMemo(() => CLIENTS.clients, []);
+  const tableInstance = useTable({
+    columns,
+    data,
+  });
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
   return (
-    <table className={styles.table}>
+    <table className={styles.table} {...getTableProps()}>
       <thead className={styles.header}>
-        <tr className={styles.header__row}>
-          <td className={styles.header__data}>Дата регистрации</td>
-          <td className={styles.header__data}>Телефон</td>
-          <td className={styles.header__data}>Номер карты</td>
-          <td className={styles.header__data}>Тип карты</td>
-          <td className={styles.header__data}>Телеграм</td>
-          <td className={styles.header__data}>Пол</td>
-          <td className={styles.header__data}>Фамилия</td>
-          <td className={styles.header__data}>Имя</td>
-          <td className={styles.header__data}>Отчество</td>
-          <td className={styles.header__data}>Дата рождения</td>
-          <td className={styles.header__data}>Бонусный баланс</td>
-          <td className={styles.header__data}>Примечание</td>
-        </tr>
+        {headerGroups.map((headerGroup) => (
+          <tr
+            className={styles.header__row}
+            {...headerGroup.getHeaderGroupProps()}
+          >
+            {headerGroup.headers.map((column) => (
+              <th className={styles.header__data} {...column.getHeaderProps()}>
+                {column.render("Header")}
+              </th>
+            ))}
+          </tr>
+        ))}
       </thead>
-      <tbody className={styles.content}>{res}</tbody>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr className={styles.content__row} {...row.getRowProps()}>
+              {row.cells.map((cell) => (
+                <td className={styles.content__data} {...cell.getCellProps()}>
+                  {cell.render("Cell")}
+                </td>
+              ))}
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 }
