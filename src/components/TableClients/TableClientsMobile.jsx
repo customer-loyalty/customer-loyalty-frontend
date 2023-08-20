@@ -75,10 +75,12 @@ export default function TableClientsMobile() {
     columns,
     data,
   });
+  const tableInstanceMobile = useTable({ columns: data, data: columns });
 
   // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-  const { getTableProps, getTableBodyProps } = tableInstance;
-  console.log(tableInstance);
+  const { getTableProps, getTableBodyProps, headerGroups } = tableInstance;
+  // console.log(tableInstance);
+  console.log(tableInstanceMobile);
   return (
     <table className={styles.table} {...getTableProps()}>
       {/* <thead className={styles.header}>
@@ -110,7 +112,19 @@ export default function TableClientsMobile() {
         })}
       </tbody> */}
       <tbody {...getTableBodyProps()}>
-        <th>h</th>
+        {/* <th>h</th> */}
+        {headerGroups.map((headerGroup) => (
+          <tr
+            className={styles.header__row}
+            {...headerGroup.getHeaderGroupProps()}
+          >
+            {headerGroup.headers.map((column) => (
+              <th className={styles.header__data} {...column.getHeaderProps()}>
+                {column.render("Header")}
+              </th>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
