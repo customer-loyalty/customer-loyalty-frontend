@@ -77,9 +77,49 @@ export default function TableClients() {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
+  // return (
+  //   <table className={styles.table} {...getTableProps()}>
+  //     <thead className={styles.header}>
+  //       {headerGroups.map((headerGroup) => (
+  //         <tr
+  //           className={styles.header__row}
+  //           {...headerGroup.getHeaderGroupProps()}
+  //         >
+  //           {headerGroup.headers.map((column) => (
+  //             <th className={styles.header__data} {...column.getHeaderProps()}>
+  //               {column.render("Header")}
+  //             </th>
+  //           ))}
+  //         </tr>
+  //       ))}
+  //     </thead>
+  //     <tbody {...getTableBodyProps()}>
+  //       {rows.map((row) => {
+  //         prepareRow(row);
+  //         return (
+  //           <tr className={styles.content__row} {...row.getRowProps()}>
+  //             {row.cells.map((cell) => (
+  //               <td className={styles.content__data} {...cell.getCellProps()}>
+  //                 {cell.render("Cell")}
+  //               </td>
+  //             ))}
+  //           </tr>
+  //         );
+  //       })}
+  //     </tbody>
+  //   </table>
+  // );
+  // console.log(headerGroups[0]);
+  const head = headerGroups[0].headers.map((header) => (
+    // console.log(header)
+    <tr>
+      <td className={styles.header__data}>{header.Header}</td>
+    </tr>
+  ));
+
   return (
     <table className={styles.table} {...getTableProps()}>
-      <thead className={styles.header}>
+      {/* <thead className={styles.header}>
         {headerGroups.map((headerGroup) => (
           <tr
             className={styles.header__row}
@@ -92,12 +132,13 @@ export default function TableClients() {
             ))}
           </tr>
         ))}
-      </thead>
+      </thead> */}
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           return (
             <tr className={styles.content__row} {...row.getRowProps()}>
+              {head}
               {row.cells.map((cell) => (
                 <td className={styles.content__data} {...cell.getCellProps()}>
                   {cell.render("Cell")}
