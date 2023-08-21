@@ -48,7 +48,10 @@ export default function TableClients() {
     </tr>
   ));
   return (
-    <table style={{ display: "none" }} className={styles.table}>
+    <table
+      style={{ height: "auto" }}
+      className={`${styles.table} ${styles.table__mobile}`}
+    >
       <tbody className={styles.content}>{tableData}</tbody>
     </table>
   );
