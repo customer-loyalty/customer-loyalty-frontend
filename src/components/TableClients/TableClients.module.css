@@ -1,16 +1,50 @@
 .table {
   width: 100%;
+  height: 400px;
   text-align: center;
   border-spacing: 0px;
   border-radius: 24px;
   overflow: hidden;
   color: #1e1d1d;
 }
+.table__mobile {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .table {
+    display: none;
+  }
+  .table__mobile {
+    display: block;
+  }
+}
+/* Настройка скролинга */
+.content,
+.header {
+  display: block;
+}
+
+.content {
+  height: 100%;
+  overflow-y: auto;
+  /* overflow-y: hidden; */
+  /* overflow-x: hidden; */
+  overflow-x: auto;
+}
+
+.content .content__data,
+.header .header__data {
+  width: 8%;
+}
+.content::-webkit-scrollbar {
+  /* width: 0; */
+}
+/*  */
 .header__row {
   height: 88px;
-  background-color: #cddcec;
 }
 .header__data {
+  background-color: #cddcec;
   padding: 0px;
   padding-right: 4px;
   font-family: "Roboto";
