@@ -1,0 +1,268 @@
+.menu {
+  max-width: 350px;
+  width: 100%;
+  /*min-height: 1024px;*/
+  height: 100vh;
+  background: var(
+    --primary-bg,
+    linear-gradient(140deg, #517fa4 0%, #243949 100%)
+  );
+  padding: 60px 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 2s ease;
+  @media screen and (max-width: 390px){
+    max-width: 390px;
+    height: 52px;
+    padding: 12px 16px 4px 16px;
+    justify-content: flex-start;
+    row-gap: 20px;
+    position: absolute;
+    z-index: 1;
+  }
+}
+.menu_open{
+  @media screen and (max-width: 390px){
+    transition: all 1.6s ease;
+    height: 678px;
+    position: absolute;
+    top: 0;
+  }
+}
+.menu__container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+  height: 100%;
+  position: relative;
+  @media screen and (max-width: 390px){
+    row-gap: 20px;
+    height: 100%;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  @media screen and (max-width: 390px){
+    margin-left: calc(24px - 16px);
+  }
+}
+.logo__icon {
+  background-image: url("../../images/google-wallet.png");
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  transition: opacity 1.6s ease;
+  @media screen and (max-width: 390px){
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+  }
+}
+.logo__text {
+  max-width: 112px;
+  margin: 0;
+  color: var(--primary-white, #fff);
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 44.8px */
+  @media screen and (max-width: 390px){
+    display: none;
+  }
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  @media screen and (max-width: 390px){
+    margin-bottom: 20px;
+    transition: opacity 1.6s ease;
+  }
+}
+.user__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+.user__info {
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+.user__name {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: 0.32px;
+}
+.user__role {
+  margin: 0;
+  color: var(--secondary-gray, #9f9f9f);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: 0.28px;
+}
+.menu__nav {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  margin: 0;
+  padding: 0;
+  transition: opacity 2.3s ease-in;
+}
+.menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu__item {
+  display: flex;
+  column-gap: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 20px;
+  width: 200px;
+  @media screen and (max-width: 390px){
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+.menu__item_active {
+  background: rgba(255, 255, 255, 0.1);
+}
+.menu__item:hover {
+  background: linear-gradient(
+    128deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.menu__text {
+  margin: 0;
+  color: var(--primary-white, #fff);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.32px;
+}
+.menu__text_exit {
+  color: var(--secondary-exit, #fa5757);
+}
+.menu__item div {
+  width: 24px;
+  height: 24px;
+}
+.menu__iconCustmer {
+  background-image: url("../../images/icon_custmer.svg");
+}
+.menu__iconCards {
+  background-image: url("../../images/icon_cards.svg");
+}
+.menu__iconProfile {
+  background-image: url("../../images/icon_profile.svg");
+}
+.menu__iconExit {
+  background-image: url("../../images/icon_exit.svg");
+}
+.telephoneInfo{
+  position: absolute;
+  bottom: 0;
+  @media screen and (max-width: 390px){
+    position: relative;
+    transition: opacity 4.4s ease-in;
+    margin-left: calc(32px - 16px);
+  }
+}
+.telephoneText {
+  margin: 0;
+  color: var(--primary-white, #fff);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.32px;
+}
+.telephoneContact {
+  margin: 0;
+  color: var(--primary-white, #fff);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 34px; /* 141.667% */
+  letter-spacing: 0.48px;
+  text-decoration: none;
+}
+.menu__footer{
+  position: absolute;
+  bottom: 0;
+  display: none;
+  @media screen and (max-width: 390px){
+    display: block;
+    width: 100%;
+  }
+}
+.menu__exitBurger{
+  @media screen and (max-width: 390px){
+    width: 44px;
+    height: 44px;
+    background-image: url("../../images/icon_burger-line.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+}
+.menu__footerContainer{
+  display: flex;
+  align-items: center;
+  column-gap: 113.5px;
+  cursor: pointer;
+}
+.menu__footerLogo{
+  background-image: url("../../images/google-wallet.png");
+  width: 28px;
+  height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  visibility: hidden;
+}
+.menu__footerLogo_visible{
+  visibility: visible;
+}
+.menu__openBurger {
+  background-image: url("../../images/icon_burger.svg");
+}
+
+.menu_none{
+  display: none;
+}
+.menu__user_opacity{
+  transition: opacity 1.3s ease;
+  opacity: 0;
+}
+.menu__nav_opacity{
+  transition: opacity 0.6s ease-out;
+  opacity: 0;
+}
+.menu__telephoneInfo_opacity{
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
