@@ -7,10 +7,12 @@ function Menu() {
     const [isDisplayNone, setIsDisplayNone] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const buttonLabel = burgerImageVisible ? "Открыть меню" : "Закрыть меню";
+    const [height, setHeight] = useState(window.innerHeight);
 
     useEffect(() => {
         const handleResize = () => {
             setWidth(window.innerWidth);
+            setHeight(window.innerHeight);
         };
 
         window.addEventListener('resize', handleResize);
@@ -50,7 +52,8 @@ function Menu() {
 
     return (
         <div className={`${styles.menu} ${burgerImageVisible ? styles.menu_open : ''}`}>
-            <div className={styles.menu__container}>
+            <div className={styles.menu__container}
+            style={{rowGap: (height < 760 && width> 390) && 20}}>
                 <div className={styles.logo}>
                     <div className={styles.logo__icon}/>
                     <p className={styles.logo__text}>LOGO</p>
