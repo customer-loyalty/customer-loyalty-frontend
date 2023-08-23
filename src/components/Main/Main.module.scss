@@ -8,6 +8,13 @@
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     margin-left: -30px;
+    @media screen and (max-width: 390px) {
+      padding: 92px 16px 0px 16px;
+      margin: 0px;
+      height: 100vh;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
   }
 
   &__addContainer {
@@ -15,6 +22,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    @media screen and (max-width: 390px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__headline {
@@ -23,6 +34,9 @@
     line-height: 46px;
     letter-spacing: 0.02em;
     margin: 0;
+    @media screen and (max-width: 390px) {
+      padding-bottom: 12px;
+    }
   }
 
   &__button {
