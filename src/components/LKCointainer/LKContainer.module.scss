@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  font-family: "Roboto", "Inter", "Arial", "sans-serif";
+  @media screen and (max-width: 375px){
+    flex-direction: column;
+  }
+}
