@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./Main.module.scss";
-import TableClients from "../TableClients/TableClients";
-import TableClientsMobile from "../TableClients/TableClientsMobile";
+// import TableClients from "../TableClients/TableClients";
+// import TableClientsMobile from "../TableClients/TableClientsMobile";
 import addIcon from "../../images/icon_plus.svg";
+import ReactTableClients from "../TableClients/ReactTableClients";
 
 function Main() {
   return (
@@ -15,8 +16,9 @@ function Main() {
       </div>
       <div className={styles.main__table}>
         <p className={styles.main__clientCounter}>Всего клиентов: 3</p>
-        <TableClients />
-        <TableClientsMobile />
+        {/* <TableClients />
+        <TableClientsMobile /> */}
+        <ReactTableClients />
       </div>
     </main>
   );
