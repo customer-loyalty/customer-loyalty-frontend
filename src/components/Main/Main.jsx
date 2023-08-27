@@ -4,12 +4,20 @@ import TableClients from "../TableClients/TableClients";
 import TableClientsMobile from "../TableClients/TableClientsMobile";
 import addIcon from "../../images/icon_plus.svg";
 
-function Main() {
+function Main({ setActive }) {
+  /* eslint-disable */
+  /* eslint react/prop-types: 0 */
   return (
     <main className={styles.main__container}>
       <div className={styles.main__addContainer}>
         <h1 className={styles.main__headline}>Клиенты</h1>
-        <button className={styles.main__button} type="submit">
+        <button
+          className={styles.main__button}
+          type="submit"
+          onClick={() => {
+            setActive(true);
+          }}
+        >
           <img src={addIcon} alt="Добавить клиента" /> Добавить клиента
         </button>
       </div>
