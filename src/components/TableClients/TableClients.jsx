@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TableClients.module.css";
 import clients from "../../utils/clients.json";
 
 export default function TableClients() {
-  const res = clients.clients.map((item) => (
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data] = useState(clients.clients);
+  const itemsPerPage = 5;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const res = currentItems.map((item) => (
     <tr className={styles.content__row} key={item.id}>
       <td className={styles.content__data}>{item.reg}</td>
       <td className={styles.content__data}>{item.phone}</td>
@@ -37,7 +44,40 @@ export default function TableClients() {
           <td className={styles.header__data}>Примечание</td>
         </tr>
       </thead>
-      <tbody className={styles.content}>{res}</tbody>
+      <tbody className={styles.content}>
+        {res}
+        <nav className={styles.nav}>
+          <button
+            className={styles.nav__button}
+            onClick={() => paginate(currentPage - 1)}
+            type="button"
+            disabled={currentPage === 1}
+          >
+            &lArr; Назад
+          </button>
+          {data
+            .slice(0, Math.ceil(data.length / itemsPerPage))
+            .map((_, index) => (
+              <button
+                className={`${styles.nav__digit} ${
+                  currentPage === index + 1 ? styles.nav__digit_active : ""
+                }`}
+                type="button"
+                onClick={() => paginate(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          <button
+            className={styles.nav__button}
+            onClick={() => paginate(currentPage + 1)}
+            type="button"
+            disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
+          >
+            Вперед &rArr;
+          </button>
+        </nav>
+      </tbody>
     </table>
   );
 }
