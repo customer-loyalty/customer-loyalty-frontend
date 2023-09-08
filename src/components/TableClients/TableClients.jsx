@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styles from "./TableClients.module.css";
 import clients from "../../utils/clients.json";
-import find from "./icon_search.svg";
+import search from "./search.svg";
+import shape from "./shape.svg";
+import exel from "./exel.svg";
+import filter from "./filter.svg";
+// import exelLight from "./exelLight.svg";
+import filterLight from "./filterLight.svg";
+import Button from "./Button";
 
 export default function TableClients() {
   const [searchValue, setSearchValue] = useState("");
@@ -46,6 +52,17 @@ export default function TableClients() {
   ));
   return (
     <div className={styles.block}>
+      <Button img={shape} />
+      <Button img={exel} light lightImg={filterLight} />
+      <Button img={filter} light lightImg={filterLight} />
+      {/* <button className={styles.button} type="button">
+        <img src={shape} alt="добавить клиента" />
+        Добавить клиента
+      </button>
+      <button className={styles.button} type="button">
+        <img src={shape} alt="добавить клиента" />
+        Добавить клиента
+      </button> */}
       <div className={styles.search}>
         <input
           className={styles.search__input}
@@ -54,7 +71,7 @@ export default function TableClients() {
           onChange={(event) => setSearchValue(event.target.value)}
           placeholder="Поиск"
         />
-        <img className={styles.search__img} src={find} alt="лупа" />
+        <img className={styles.search__img} src={search} alt="поиск" />
       </div>
       <table className={styles.table}>
         <thead className={styles.header}>
