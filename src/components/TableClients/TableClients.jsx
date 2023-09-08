@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./TableClients.module.css";
 import clients from "../../utils/clients.json";
+import find from "./icon_search.svg";
 
 export default function TableClients() {
   const [searchValue, setSearchValue] = useState("");
@@ -45,12 +46,16 @@ export default function TableClients() {
   ));
   return (
     <div className={styles.block}>
-      <input
-        type="text"
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
-        placeholder="Search..."
-      />
+      <div className={styles.search}>
+        <input
+          className={styles.search__input}
+          type="text"
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
+          placeholder="Поиск"
+        />
+        <img className={styles.search__img} src={find} alt="лупа" />
+      </div>
       <table className={styles.table}>
         <thead className={styles.header}>
           <tr className={styles.header__row}>
