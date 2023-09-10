@@ -6,17 +6,17 @@ import shape from "./shape.svg";
 import exel from "./exel.svg";
 import filter from "./filter.svg";
 // import exelLight from "./exelLight.svg";
-import filterLight from "./filterLight.svg";
+import filterHovered from "./filterHovered.svg";
 import Button from "./Button";
 
 export default function TableClients() {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [data] = useState(clients.clients);
-  const itemsPerPage = 5;
+  const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // eslint-disable-next-line array-callback-return
+
   // const filteredData = data.filter((row) => {
   //   console.log(searchValue.toLowerCase(), row.name.toLowerCase());
   // });
@@ -52,26 +52,55 @@ export default function TableClients() {
   ));
   return (
     <div className={styles.block}>
-      <Button img={shape} />
-      <Button img={exel} light lightImg={filterLight} />
-      <Button img={filter} light lightImg={filterLight} />
-      {/* <button className={styles.button} type="button">
-        <img src={shape} alt="добавить клиента" />
-        Добавить клиента
-      </button>
-      <button className={styles.button} type="button">
-        <img src={shape} alt="добавить клиента" />
-        Добавить клиента
-      </button> */}
-      <div className={styles.search}>
-        <input
-          className={styles.search__input}
-          type="text"
-          value={searchValue}
-          onChange={(event) => setSearchValue(event.target.value)}
-          placeholder="Поиск"
+      <div className={styles.buttons}>
+        <Button
+          img={shape}
+          style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
+          hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
+          text="Добавить клиента"
         />
-        <img className={styles.search__img} src={search} alt="поиск" />
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div className={styles.search}>
+            <input
+              className={styles.search__input}
+              type="text"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+              placeholder="Поиск"
+            />
+            <img className={styles.search__img} src={search} alt="поиск" />
+          </div>
+          <Button
+            img={exel}
+            hoverImg={filterHovered}
+            style={{
+              backgroundColor: "#e5f0fb",
+              color: "#5ca1ea",
+              marginLeft: "60px",
+            }}
+            hoverStyle={{
+              backgroundColor: "#5CA1EA",
+              color: "#FFFFFF",
+              marginLeft: "60px",
+            }}
+            text="Добавить клиента"
+          />
+          <Button
+            img={filter}
+            hoverImg={filterHovered}
+            style={{
+              backgroundColor: "#e5f0fb",
+              color: "#5ca1ea",
+              marginLeft: "20px",
+            }}
+            hoverStyle={{
+              backgroundColor: "#5CA1EA",
+              color: "#FFFFFF",
+              marginLeft: "20px",
+            }}
+            text="Фильтр"
+          />
+        </div>
       </div>
       <table className={styles.table}>
         <thead className={styles.header}>

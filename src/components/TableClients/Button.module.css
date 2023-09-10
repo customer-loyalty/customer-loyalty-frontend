@@ -10,23 +10,10 @@
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.02em;
-  color: #ffffff;
   display: flex;
   white-space: nowrap;
   justify-content: center;
   border: none;
   cursor: pointer;
-  background-color: #5ca1ea;
-  transition: 0.3s ease;
-}
-.button:hover {
-  background-color: #384098;
-}
-.button_light {
-  background-color: #e5f0fb;
-  color: #5ca1ea;
-}
-.button_light:hover {
-  background-color: #5ca1ea;
-  color: #ffffff;
+  align-items: center;
 }
