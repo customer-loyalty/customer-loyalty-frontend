@@ -1,29 +1,117 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import styles from "./Main.module.scss";
 import TableClients from "../TableClients/TableClients";
 import TableClientsMobile from "../TableClients/TableClientsMobile";
-import addIcon from "../../images/icon_plus.svg";
+import Button from "../ButtonLK/Button";
+import search from "../../images/lk/search.svg";
+import shape from "../../images/lk/shape.svg";
+import exel from "../../images/lk/exel.svg";
+import filter from "../../images/lk/filter.svg";
+import exelHovered from "../../images/lk/exelHovered.svg";
+import filterHovered from "../../images/lk/filterHovered.svg";
+import clients from "../../utils/clients.json";
+import help from "../../images/lk/help.svg";
 
 function Main({ setActive }) {
-  /* eslint-disable */
-  /* eslint react/prop-types: 0 */
+  const [searchValue, setSearchValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data] = useState(clients.clients);
+  const itemsPerPage = 8;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const filteredData = data.filter((row) =>
+    Object.values(row).some((value) =>
+      value.toString().toLowerCase().includes(searchValue.toLowerCase())
+    )
+  );
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <main className={styles.main__container}>
-      <div className={styles.main__addContainer}>
-        <h1 className={styles.main__headline}>Клиенты</h1>
-        <button
-          className={styles.main__button}
-          type="submit"
-          onClick={() => {
-            setActive(true);
-          }}
-        >
-          <img src={addIcon} alt="Добавить клиента" /> Добавить клиента
-        </button>
+    <main className={styles.content}>
+      <div>
+        <div className={styles.headline}>
+          <h1 className={styles.headline__header}>Клиенты</h1>
+          <div className={styles.operator}>
+            <img
+              className={styles.operator__img}
+              src={help}
+              alt="Звонок оператору"
+            />
+            <div className={styles.operator__textSection}>
+              <p className={styles.operator__text}>Нужна помощь? Звоните</p>
+              <p className={styles.operator__number}>8(900)254-14-14</p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.buttons}>
+          <Button
+            img={shape}
+            style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
+            hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
+            text="Добавить клиента"
+            onClick={() => {
+              setActive(true);
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div className={styles.search}>
+              <input
+                className={styles.search__input}
+                type="text"
+                value={searchValue}
+                onChange={(event) => setSearchValue(event.target.value)}
+                placeholder="Поиск"
+              />
+              <img className={styles.search__img} src={search} alt="поиск" />
+            </div>
+            <Button
+              img={exel}
+              hoverImg={exelHovered}
+              style={{
+                backgroundColor: "#e5f0fb",
+                color: "#5ca1ea",
+                marginLeft: "60px",
+              }}
+              hoverStyle={{
+                backgroundColor: "#5CA1EA",
+                color: "#FFFFFF",
+                marginLeft: "60px",
+              }}
+              text="Выгрузить в exel"
+            />
+            <Button
+              img={filter}
+              hoverImg={filterHovered}
+              style={{
+                backgroundColor: "#e5f0fb",
+                color: "#5ca1ea",
+                marginLeft: "20px",
+              }}
+              hoverStyle={{
+                backgroundColor: "#5CA1EA",
+                color: "#FFFFFF",
+                marginLeft: "20px",
+              }}
+              text="Фильтр"
+            />
+          </div>
+        </div>
       </div>
       <div className={styles.main__table}>
-        <p className={styles.main__clientCounter}>Всего клиентов: 3</p>
-        <TableClients />
+        <TableClients
+          currentItems={currentItems}
+          currentPage={currentPage}
+          paginate={paginate}
+          totalPages={totalPages}
+          data={data}
+        />
         <TableClientsMobile />
       </div>
     </main>
