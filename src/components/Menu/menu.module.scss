@@ -159,6 +159,13 @@
     box-sizing: border-box;
   }
 }
+.exit__container:hover {
+  background: linear-gradient(
+    128deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
 .menu__item_active {
   background: rgba(255, 255, 255, 0.1);
 }
@@ -207,25 +214,7 @@
     transition: opacity 4.4s ease-in;
   }
 }
-.telephoneText {
-  margin: 0;
-  color: var(--primary-white, #fff);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  letter-spacing: 0.32px;
-}
-.telephoneContact {
-  margin: 0;
-  color: var(--primary-white, #fff);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 34px; /* 141.667% */
-  letter-spacing: 0.48px;
-  text-decoration: none;
-}
+
 .menu__footer{
   position: absolute;
   bottom: 0;
