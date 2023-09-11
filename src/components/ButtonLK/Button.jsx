@@ -30,29 +30,4 @@ export default function Button({
       {text}
     </button>
   );
-  // return isHovered ? (
-  //   <button
-  //     style={hoverStyle || style}
-  //     className={styles.button}
-  //     type="button"
-  //     onMouseEnter={handleMouseEnter}
-  //     onMouseLeave={handleMouseLeave}
-  //     onClick={onClick}
-  //   >
-  //     <img src={hoverImg || img} alt="добавить клиента" />
-  //     {text}
-  //   </button>
-  // ) : (
-  //   <button
-  //     style={style}
-  //     className={styles.button}
-  //     type="button"
-  //     onMouseEnter={handleMouseEnter}
-  //     onMouseLeave={handleMouseLeave}
-  //     onClick={onClick}
-  //   >
-  //     <img src={img} alt="добавить клиента" />
-  //     {text}
-  //   </button>
-  // );
 }

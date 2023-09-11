@@ -2,8 +2,6 @@
 import React from "react";
 import styles from "./TableClients.module.css";
 
-// import Button from "./Button";
-
 export default function TableClients({
   currentItems,
   currentPage,
@@ -11,17 +9,6 @@ export default function TableClients({
   totalPages,
   data,
 }) {
-  // const filteredData = data.filter((row) => {
-  //   console.log(searchValue.toLowerCase(), row.name.toLowerCase());
-  // });
-  // const filteredData = data.filter((row) =>
-  //   row.name.toLowerCase().includes(searchValue.toLowerCase())
-  // );
-
-  // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
-  // const showEllipsis = totalPages > 6;
-  // const res = currentItems.map((item) => (
   const res = currentItems.map((item) => (
     <tr className={styles.content__row} key={item.id}>
       <td className={styles.content__data}>{item.cardId}</td>
@@ -66,47 +53,6 @@ export default function TableClients({
         >
           &lArr; Назад
         </button>
-        {/* {currentPage > 1 && (
-          <button
-            className={styles.nav__digit}
-            type="button"
-            onClick={() => setCurrentPage(1)}
-          >
-            1
-          </button>
-        )}
-        {showEllipsis && currentPage > 2 && <span>...</span>}
-        {currentPage > 2 && (
-          <button
-            className={styles.nav__digit}
-            type="button"
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            {currentPage - 1}
-          </button>
-        )}
-        <button className={styles.nav__digit} type="button" disabled>
-          {currentPage}
-        </button>
-        {currentPage < totalPages - 1 && (
-          <button
-            className={styles.nav__digit}
-            type="button"
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            {currentPage + 1}
-          </button>
-        )}
-        {showEllipsis && currentPage < totalPages - 1 && <span>...</span>}
-        {currentPage < totalPages && (
-          <button
-            className={styles.nav__digit}
-            type="button"
-            onClick={() => setCurrentPage(totalPages)}
-          >
-            {totalPages}
-          </button>
-        )} */}
         {data.slice(0, totalPages).map((_, index) => (
           <button
             className={`${styles.nav__digit} ${
