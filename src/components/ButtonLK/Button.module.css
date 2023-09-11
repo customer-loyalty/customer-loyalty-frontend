@@ -1,8 +1,6 @@
 .button {
   width: 240px;
   height: 48px;
-  padding-top: 12px;
-  padding-bottom: 12px;
   border-radius: 8px;
   gap: 8px;
   font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
@@ -16,4 +14,5 @@
   border: none;
   cursor: pointer;
   align-items: center;
+  transition: 0.5s ease;
 }

@@ -1,37 +1,24 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 import styles from "./TableClients.module.css";
-import clients from "../../utils/clients.json";
-import search from "./search.svg";
-import shape from "./shape.svg";
-import exel from "./exel.svg";
-import filter from "./filter.svg";
-// import exelLight from "./exelLight.svg";
-import filterHovered from "./filterHovered.svg";
-import Button from "./Button";
 
-export default function TableClients() {
-  const [searchValue, setSearchValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [data] = useState(clients.clients);
-  const itemsPerPage = 8;
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+// import Button from "./Button";
 
+export default function TableClients({
+  currentItems,
+  currentPage,
+  paginate,
+  totalPages,
+  data,
+}) {
   // const filteredData = data.filter((row) => {
   //   console.log(searchValue.toLowerCase(), row.name.toLowerCase());
   // });
   // const filteredData = data.filter((row) =>
   //   row.name.toLowerCase().includes(searchValue.toLowerCase())
   // );
-  const filteredData = data.filter((row) =>
-    Object.values(row).some((value) =>
-      value.toString().toLowerCase().includes(searchValue.toLowerCase())
-    )
-  );
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
   // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // const showEllipsis = totalPages > 6;
   // const res = currentItems.map((item) => (
@@ -52,56 +39,6 @@ export default function TableClients() {
   ));
   return (
     <div className={styles.block}>
-      <div className={styles.buttons}>
-        <Button
-          img={shape}
-          style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
-          hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
-          text="Добавить клиента"
-        />
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div className={styles.search}>
-            <input
-              className={styles.search__input}
-              type="text"
-              value={searchValue}
-              onChange={(event) => setSearchValue(event.target.value)}
-              placeholder="Поиск"
-            />
-            <img className={styles.search__img} src={search} alt="поиск" />
-          </div>
-          <Button
-            img={exel}
-            hoverImg={filterHovered}
-            style={{
-              backgroundColor: "#e5f0fb",
-              color: "#5ca1ea",
-              marginLeft: "60px",
-            }}
-            hoverStyle={{
-              backgroundColor: "#5CA1EA",
-              color: "#FFFFFF",
-              marginLeft: "60px",
-            }}
-            text="Добавить клиента"
-          />
-          <Button
-            img={filter}
-            hoverImg={filterHovered}
-            style={{
-              backgroundColor: "#e5f0fb",
-              color: "#5ca1ea",
-              marginLeft: "20px",
-            }}
-            hoverStyle={{
-              backgroundColor: "#5CA1EA",
-              color: "#FFFFFF",
-              marginLeft: "20px",
-            }}
-            text="Фильтр"
-          />
-        </div>
-      </div>
       <table className={styles.table}>
         <thead className={styles.header}>
           <tr className={styles.header__row}>
