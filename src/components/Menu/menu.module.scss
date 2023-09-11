@@ -3,11 +3,13 @@
   width: 100%;
   /*min-height: 1024px;*/
   height: 100vh;
-  background: var(
+/*  background: var(
     --primary-bg,
     linear-gradient(140deg, #517fa4 0%, #243949 100%)
-  );
-  padding: 60px 40px;
+  );*/
+  background: var(--primary-text, #1E1D1D);
+  /*padding: 60px 40px;*/
+  padding: 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -52,7 +54,7 @@
   }
 }
 .logo__icon {
-  background-image: url("../../images/google-wallet.png");
+  background-image: url("../../images/logo__icon.png");
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;
@@ -131,18 +133,38 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  color: var(--primary-white, #FFF);
 }
 .menu__item {
   display: flex;
   column-gap: 20px;
   border-radius: 12px;
   cursor: pointer;
-  padding: 20px;
-  width: 200px;
+  padding: 12px 20px;
+  width: 240px;
   @media screen and (max-width: 390px){
     width: 100%;
     box-sizing: border-box;
   }
+}
+.exit__container{
+  display: flex;
+  column-gap: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 12px 20px;
+  width: 240px;
+  @media screen and (max-width: 390px){
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+.exit__container:hover {
+  background: linear-gradient(
+    128deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .menu__item_active {
   background: rgba(255, 255, 255, 0.1);
@@ -154,7 +176,7 @@
     rgba(255, 255, 255, 0) 100%
   );
 }
-.menu__text {
+.exit__text {
   margin: 0;
   color: var(--primary-white, #fff);
   font-size: 16px;
@@ -163,7 +185,7 @@
   line-height: 24px; /* 150% */
   letter-spacing: 0.32px;
 }
-.menu__text_exit {
+.exit__text_exit {
   color: var(--secondary-exit, #fa5757);
 }
 .menu__item div {
@@ -179,37 +201,20 @@
 .menu__iconProfile {
   background-image: url("../../images/icon_profile.svg");
 }
-.menu__iconExit {
+.exit__icon {
+  width: 24px;
+  height: 24px;
   background-image: url("../../images/icon_exit.svg");
 }
-.telephoneInfo{
+.exit{
   position: absolute;
   bottom: 0;
   @media screen and (max-width: 390px){
     position: relative;
     transition: opacity 4.4s ease-in;
-    margin-left: calc(32px - 16px);
   }
 }
-.telephoneText {
-  margin: 0;
-  color: var(--primary-white, #fff);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  letter-spacing: 0.32px;
-}
-.telephoneContact {
-  margin: 0;
-  color: var(--primary-white, #fff);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 34px; /* 141.667% */
-  letter-spacing: 0.48px;
-  text-decoration: none;
-}
+
 .menu__footer{
   position: absolute;
   bottom: 0;
@@ -262,7 +267,7 @@
   transition: opacity 0.6s ease-out;
   opacity: 0;
 }
-.menu__telephoneInfo_opacity{
+.exit_opacity{
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }
