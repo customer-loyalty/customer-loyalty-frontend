@@ -86,19 +86,18 @@ function Menu() {
                             <div className={styles.menu__iconProfile}/>
                             <p className={styles.menu__text}>Аккаунт</p>
                         </li>
-                        <li className={styles.menu__item}>
-                            <div className={styles.menu__iconExit}/>
-                            <p className={`${styles.menu__text} ${styles.menu__text_exit}`}>Выйти</p>
-                        </li>
+
                     </ul>
                 </menu>
                 <div className={
-                    `${styles.telephoneInfo} 
-                ${!burgerImageVisible ? styles.menu__telephoneInfo_opacity : ''}
+                    `${styles.exit} 
+                ${!burgerImageVisible ? styles.exit_opacity : ''}
                 ${isDisplayNone ? styles.menu_none : ''}
                 `}>
-                    <p className={styles.telephoneText}>Нужна помощь? Звоните</p>
-                    <a className={styles.telephoneContact} href='tel:+79002541414'>8(900)254-14-14</a>
+                    <div className={styles.exit__container}>
+                        <div className={styles.exit__icon}/>
+                        <p className={`${styles.exit__text} ${styles.exit__text_exit}`}>Выйти</p>
+                    </div>
                 </div>
                 <div className={styles.menu__footer}
                      onClick={handleBurgerClick}
