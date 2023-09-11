@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./TableClients.module.css";
@@ -60,6 +61,7 @@ export default function TableClients({
             }`}
             type="button"
             onClick={() => paginate(index + 1)}
+            key={index}
           >
             {index + 1}
           </button>
