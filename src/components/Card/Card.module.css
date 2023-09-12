@@ -1,0 +1,75 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  width: 485px;
+  height: 337px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border-left: solid 10px green;
+  padding: 24px 0px 24px 36px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.main__point {
+  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #747171;
+}
+.main__text {
+  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.main__edit {
+  background: #e5f0fb;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.main__delete {
+  padding: 15px 17px;
+  cursor: pointer;
+}
+.parameters {
+  display: flex;
+  flex-direction: column;
+}
+.parameters__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.parameters__point {
+  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #747171;
+}
+.parameters__value {
+  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #1e1d1d;
+}

@@ -3,6 +3,7 @@ import styles from "./Cards.module.css";
 import Headline from "../Headline/Headline";
 import ButtonLK from "../ButtonLK/Button";
 import shape from "../../images/lk/shape.svg";
+import Card from "../Card/Card";
 
 export default function Cards() {
   return (
@@ -16,6 +17,14 @@ export default function Cards() {
           text="Создать карту"
         />
       </div>
+      <Card
+        type="Стандартная"
+        conditions="При регистрации"
+        startBonuses="100"
+        accrualBonuses="5% от покупки"
+        combustionBonuses="Не сгорают"
+        writeOfBonuses="10% от суммы покупок"
+      />
     </main>
   );
 }
