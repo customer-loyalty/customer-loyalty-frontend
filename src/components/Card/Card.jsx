@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Card.module.css";
 import deleteImg from "../../images/lk/deleteImg.svg";
 import edit from "../../images/lk/edit.svg";
+import editHovered from "../../images/lk/editHovered.svg";
 
 export default function Card({
   type,
@@ -12,6 +13,13 @@ export default function Card({
   combustionBonuses,
   writeOfBonuses,
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
   return (
     <div className={styles.content}>
       <div className={styles.main}>
@@ -21,9 +29,13 @@ export default function Card({
         </div>
         <div className={styles.main__buttons}>
           <img
-            className={styles.main__edit}
-            src={edit}
+            className={
+              isHovered ? styles.main__edit_hovered : styles.main__edit
+            }
+            src={isHovered ? editHovered : edit}
             alt="редактировать карту"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
           <img
             className={styles.main__delete}

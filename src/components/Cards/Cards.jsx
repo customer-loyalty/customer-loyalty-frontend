@@ -17,14 +17,40 @@ export default function Cards() {
           text="Создать карту"
         />
       </div>
-      <Card
-        type="Стандартная"
-        conditions="При регистрации"
-        startBonuses="100"
-        accrualBonuses="5% от покупки"
-        combustionBonuses="Не сгорают"
-        writeOfBonuses="10% от суммы покупок"
-      />
+      <div className={styles.cards}>
+        <Card
+          type="Стандартная"
+          conditions="При регистрации"
+          startBonuses="100"
+          accrualBonuses="5% от покупки"
+          combustionBonuses="Не сгорают"
+          writeOfBonuses="10% от суммы покупок"
+        />
+        <Card
+          type="Стандартная"
+          conditions="При регистрации"
+          startBonuses="100"
+          accrualBonuses="5% от покупки"
+          combustionBonuses="Не сгорают"
+          writeOfBonuses="10% от суммы покупок"
+        />
+        <Card
+          type="Стандартная"
+          conditions="При регистрации"
+          startBonuses="100"
+          accrualBonuses="5% от покупки"
+          combustionBonuses="Не сгорают"
+          writeOfBonuses="10% от суммы покупок"
+        />
+        <Card
+          type="Стандартная"
+          conditions="При регистрации"
+          startBonuses="100"
+          accrualBonuses="5% от покупки"
+          combustionBonuses="Не сгорают"
+          writeOfBonuses="10% от суммы покупок"
+        />
+      </div>
     </main>
   );
 }
