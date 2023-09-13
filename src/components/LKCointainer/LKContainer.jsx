@@ -5,6 +5,7 @@ import styles from "./LKContainer.module.scss";
 import Menu from "../Menu/Menu";
 import Cards from "../Cards/Cards";
 import Clients from "../Clients/Clients";
+import Account from "../Account/Account";
 import Modal from "../Modal/Modal";
 import AddClient from "../AddClient/AddClient";
 
@@ -28,6 +29,7 @@ function LKContainer({
           element={<Clients setActive={setModalAddClientActive} />}
         />
         <Route path="/cards" element={<Cards />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </div>
   );
