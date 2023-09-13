@@ -87,57 +87,6 @@
   border-bottom-left-radius: 30px;
   margin-left: -30px;
 }
-.headline {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 40px;
-}
-.headline__header {
-  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 46px;
-  letter-spacing: 0.02em;
-  text-align: left;
-}
-.operator {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-.operator__img {
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.operator__img:hover {
-  opacity: 0.5;
-}
-.operator__textSection {
-  display: flex;
-  flex-direction: column;
-}
-.operator__text {
-  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  text-align: left;
-}
-.operator__number {
-  font-family: "SF Pro Display", "Roboto", "Inter", "Arial", "sans-serif";
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 34px;
-  letter-spacing: 0.02em;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.operator__number:hover {
-  opacity: 0.5;
-}
 .buttons {
   width: 100%;
   display: flex;
