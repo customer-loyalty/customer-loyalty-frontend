@@ -1,0 +1,119 @@
+.main {
+  &__container {
+    background-color: #f0eff2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px 40px 0 40px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-left: -30px;
+    @media screen and (max-width: 390px) {
+      padding: 92px 16px 0px 16px;
+      margin: 0px;
+      height: 100vh;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+
+  &__addContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    @media screen and (max-width: 390px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__headline {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 46px;
+    letter-spacing: 0.02em;
+    margin: 0;
+    @media screen and (max-width: 390px) {
+      padding-bottom: 12px;
+    }
+  }
+
+  &__button {
+    width: 291px;
+    height: 48px;
+    padding: 12px 40px 12px 40px;
+    border-radius: 12px;
+    gap: 8px;
+    background-color: #5760cc;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color,
+      0.3s ease;
+  }
+
+  &__button:hover {
+    background-color: #384098;
+  }
+
+  &__button:disabled {
+    background-color: #9f9f9f;
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__clientCounter {
+    margin: 0 0 20px 0;
+  }
+}
+.content {
+  background-color: #f0eff2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px 40px 0 40px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  margin-left: -30px;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 28px;
+}
+.search {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a2a2a2;
+  width: 400px;
+}
+.search__input {
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  padding: 13px 20px;
+  font-family: "Roboto", "Inter", "Arial", "sans-serif";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.search__img {
+  cursor: pointer;
+}

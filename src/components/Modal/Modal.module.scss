@@ -1,0 +1,43 @@
+.modalOverlay {
+  background-color: rgba(81, 127, 164, 0.6);
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  transform: scale(0);
+
+  &_active {
+    background-color: rgba(81, 127, 164, 0.6);
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    transition: transform 0.2s ease;
+    transform: scale(1);
+  }
+}
+
+.modal {
+  background-color: #fff;
+  width: 1148px;
+  height: 870px;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

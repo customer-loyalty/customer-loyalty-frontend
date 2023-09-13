@@ -1,0 +1,21 @@
+{
+  "cards": [
+    {
+      "conditions": {
+        "onReg": true,
+        "rubles": 1000,
+        "bonuses": 1000
+      },
+      "startBonuses": {
+        "onReg": true,
+        "percent": 5,
+        "bonuses": 1000
+      },
+      "accrualBonuses": {
+        "percent": 5,
+        "rubles_bonuses": 0.5
+      },
+      "combustionBonuses": {}
+    }
+  ]
+}
