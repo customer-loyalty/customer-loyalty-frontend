@@ -1,0 +1,10 @@
+@font-face {
+  font-weight: 400;
+  font-family: SF Pro Display;
+  src: url("./SFProDisplay/SFProDisplay-Regular.ttf");
+}
+@font-face {
+  font-weight: 500;
+  font-family: SF Pro Display;
+  src: url("./SFProDisplay/SFProDisplay-Medium.ttf");
+}
