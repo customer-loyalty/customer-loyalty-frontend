@@ -10,7 +10,6 @@ function Menu() {
   const [width, setWidth] = useState(window.innerWidth);
   const buttonLabel = burgerImageVisible ? "Открыть меню" : "Закрыть меню";
   const [height, setHeight] = useState(window.innerHeight);
-  console.log(location.pathname === "/admin/clients");
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -123,6 +122,19 @@ function Menu() {
               >
                 <div className={styles.menu__iconProfile} />
                 <p className={styles.menu__text}>Аккаунт</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="mailing"
+                className={`${styles.menu__item} ${
+                  location.pathname === "/admin/mailing"
+                    ? styles.menu__item_active
+                    : ""
+                }`}
+              >
+                <div className={styles.menu__iconProfile} />
+                <p className={styles.menu__text}>Рассылка</p>
               </Link>
             </li>
           </ul>

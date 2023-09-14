@@ -6,6 +6,7 @@ import Menu from "../Menu/Menu";
 import Cards from "../Cards/Cards";
 import Clients from "../Clients/Clients";
 import Account from "../Account/Account";
+import Mailing from "../Mailing/Mailing";
 import Modal from "../Modal/Modal";
 import AddClient from "../AddClient/AddClient";
 
@@ -30,6 +31,7 @@ function LKContainer({
         />
         <Route path="/cards" element={<Cards />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/mailing" element={<Mailing />} />
       </Routes>
     </div>
   );
