@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import styles from "./Main.module.scss";
+import styles from "./Clients.module.scss";
 import TableClients from "../TableClients/TableClients";
 import TableClientsMobile from "../TableClients/TableClientsMobile";
+import Headline from "../Headline/Headline";
 import Button from "../ButtonLK/Button";
 import search from "../../images/lk/search.svg";
 import shape from "../../images/lk/shape.svg";
@@ -11,9 +12,8 @@ import filter from "../../images/lk/filter.svg";
 import exelHovered from "../../images/lk/exelHovered.svg";
 import filterHovered from "../../images/lk/filterHovered.svg";
 import clients from "../../utils/clients.json";
-import help from "../../images/lk/help.svg";
 
-function Main({ setActive }) {
+function Clients({ setActive }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [data] = useState(clients.clients);
@@ -31,20 +31,7 @@ function Main({ setActive }) {
   return (
     <main className={styles.content}>
       <div>
-        <div className={styles.headline}>
-          <h1 className={styles.headline__header}>Клиенты</h1>
-          <div className={styles.operator}>
-            <img
-              className={styles.operator__img}
-              src={help}
-              alt="Звонок оператору"
-            />
-            <div className={styles.operator__textSection}>
-              <p className={styles.operator__text}>Нужна помощь? Звоните</p>
-              <p className={styles.operator__number}>8(900)254-14-14</p>
-            </div>
-          </div>
-        </div>
+        <Headline title="Клиенты" />
         <div className={styles.buttons}>
           <Button
             img={shape}
@@ -118,4 +105,4 @@ function Main({ setActive }) {
   );
 }
 
-export default Main;
+export default Clients;

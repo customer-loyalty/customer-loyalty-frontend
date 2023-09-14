@@ -9,21 +9,19 @@ function App() {
     setModalAddClientActive(false);
   };
   return (
-    <div>
-      <Routes>
-        <Route exact path="/" element={<PromoPage />} />
-        <Route
-          path="/admin"
-          element={
-            <LKContainer
-              modalAddClientActive={modalAddClientActive}
-              setModalAddClientActive={setModalAddClientActive}
-              closeModal={closeModal}
-            />
-          }
-        />
-      </Routes>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<PromoPage />} />
+      <Route
+        path="/admin/*"
+        element={
+          <LKContainer
+            modalAddClientActive={modalAddClientActive}
+            setModalAddClientActive={setModalAddClientActive}
+            closeModal={closeModal}
+          />
+        }
+      />
+    </Routes>
   );
 }
 

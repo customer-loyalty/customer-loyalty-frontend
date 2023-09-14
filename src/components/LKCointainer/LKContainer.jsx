@@ -1,7 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import styles from "./LKContainer.module.scss";
 import Menu from "../Menu/Menu";
-import Main from "../Main/Main";
+import Cards from "../Cards/Cards";
+import Clients from "../Clients/Clients";
+import Account from "../Account/Account";
+import Mailing from "../Mailing/Mailing";
 import Modal from "../Modal/Modal";
 import AddClient from "../AddClient/AddClient";
 
@@ -10,8 +15,6 @@ function LKContainer({
   setModalAddClientActive,
   closeModal,
 }) {
-  /* eslint-disable */
-  /* eslint react/prop-types: 0 */
   return (
     <div className={styles.container}>
       <Modal
@@ -21,7 +24,15 @@ function LKContainer({
         <AddClient />
       </Modal>
       <Menu />
-      <Main setActive={setModalAddClientActive} />
+      <Routes>
+        <Route
+          path="/clients"
+          element={<Clients setActive={setModalAddClientActive} />}
+        />
+        <Route path="/cards" element={<Cards />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/mailing" element={<Mailing />} />
+      </Routes>
     </div>
   );
 }

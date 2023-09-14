@@ -1,0 +1,84 @@
+.content {
+  font-family: "SF Pro Display", "Inter", "Arial", "sans-serif";
+  background-color: #f0eff2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px 40px 0 40px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  margin-left: -30px;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 28px;
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.info__card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 750px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+}
+.info__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+.info__headerText {
+  display: flex;
+  flex-direction: column;
+}
+.info__icon {
+  padding: 10px;
+  background-color: #86afda;
+  border-radius: 8px;
+}
+.info__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.info__subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #747171;
+}
+.info__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.info__point {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #747171;
+}
+.info__text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #1e1d1d;
+}
