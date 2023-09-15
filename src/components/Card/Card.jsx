@@ -11,9 +11,8 @@ export default function Card({
   conditions,
   startBonuses,
   accrualBonuses,
-  combustionBonuses,
-  writeOfBonuses,
 }) {
+  console.log(conditions);
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -51,26 +50,28 @@ export default function Card({
             Условия выдачи карты
             {/* <p className={styles.parameters__value}>{conditions}</p> */}
             <p className={styles.parameters__value}>
-              {conditions.onReg
+              {conditions ? `Выше ${conditions} рублей` : "При регистрации"}
+              {/* {conditions.onReg
                 ? "При регистрации"
                 : conditions.rubles
                 ? `Выше ${conditions.rubles} рублей`
                 : conditions.bonuses
                 ? `Выше ${conditions.bonuses} бонусов`
-                : ""}
+                : ""} */}
             </p>
           </li>
           <li className={styles.parameters__point}>
             Стартовые бонусы
             {/* <p className={styles.parameters__value}>{startBonuses}</p> */}
             <p className={styles.parameters__value}>
-              {startBonuses.onReg
+              {startBonuses ? `${startBonuses}` : 0}
+              {/* {startBonuses.onReg
                 ? "При регистрации"
                 : startBonuses.percent
                 ? `${startBonuses.percent}%`
                 : startBonuses.bonuses
                 ? `${startBonuses.bonuses}`
-                : ""}
+                : ""} */}
             </p>
           </li>
           <li className={styles.parameters__point}>
@@ -84,9 +85,8 @@ export default function Card({
                 : ""}
             </p>
           </li>
-          <li className={styles.parameters__point}>
+          {/* <li className={styles.parameters__point}>
             Сгорание бонусы
-            {/* <p className={styles.parameters__value}>{combustionBonuses}</p> */}
             <p className={styles.parameters__value}>
               {combustionBonuses === 0
                 ? `Не сгорают`
@@ -95,13 +95,12 @@ export default function Card({
           </li>
           <li className={styles.parameters__point}>
             Списание бонусов
-            {/* <p className={styles.parameters__value}>{writeOfBonuses}</p> */}
             <p className={styles.parameters__value}>
               {writeOfBonuses === 0
                 ? `Запрещено`
                 : `${writeOfBonuses}% от суммы`}
             </p>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

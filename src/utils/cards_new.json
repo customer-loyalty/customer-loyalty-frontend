@@ -1,0 +1,23 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "Продвинутая",
+      "purchase_amount": 10000,
+      "initial_bonuses": 1000,
+      "rate_field": 10
+    },
+    {
+      "id": 2,
+      "name": "Продвинутая",
+      "purchase_amount": 10000,
+      "initial_bonuses": 1000,
+      "rate_field": 10
+    },
+    {
+      "id": 3,
+      "name": "Стартоваяфвфывфывфыыфввф",
+      "rate_field": 10
+    }
+  ]
+}

@@ -28,6 +28,17 @@
   text-align: left;
   color: #747171;
 }
+.main__type {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  max-width: 160px;
+  word-wrap: break-word;
+  max-height: 200px;
+  overflow: hidden;
+}
 .main__text {
   font-size: 24px;
   font-weight: 500;

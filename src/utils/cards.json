@@ -41,20 +41,6 @@
       },
       "combustionBonuses": 0,
       "bonus_usage": 10
-    },
-    {
-      "id": 4,
-      "conditions": {
-        "bonuses": 1000
-      },
-      "startBonuses": {
-        "bonuses": 1000
-      },
-      "accrualBonuses": {
-        "percent": 5
-      },
-      "combustionBonuses": 0,
-      "bonus_usage": 10
     }
   ]
 }

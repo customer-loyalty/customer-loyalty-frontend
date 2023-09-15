@@ -4,19 +4,26 @@ import Headline from "../Headline/Headline";
 import ButtonLK from "../ButtonLK/Button";
 import shape from "../../images/lk/shape.svg";
 import Card from "../Card/Card";
-import cards from "../../utils/cards.json";
+import cards from "../../utils/cards_new.json";
 
 export default function Cards() {
   const res = cards.cards.map((item) => (
     <Card
       key={item.id}
-      type="Пользовательская"
-      conditions={item.conditions}
-      startBonuses={item.startBonuses}
-      accrualBonuses={item.accrualBonuses}
-      combustionBonuses={item.combustionBonuses}
-      writeOfBonuses={item.bonus_usage}
+      type={item.name}
+      conditions={item.purchase_amount}
+      startBonuses={item.initial_bonuses}
+      accrualBonuses={item.rate_field}
     />
+    // <Card
+    //   key={item.id}
+    //   type="Пользовательская"
+    //   conditions={item.conditions}
+    //   startBonuses={item.startBonuses}
+    //   accrualBonuses={item.accrualBonuses}
+    //   combustionBonuses={item.combustionBonuses}
+    //   writeOfBonuses={item.bonus_usage}
+    // />
   ));
   return (
     <main className={styles.content}>
