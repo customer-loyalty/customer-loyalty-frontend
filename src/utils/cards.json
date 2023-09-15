@@ -1,21 +1,60 @@
 {
   "cards": [
     {
+      "id": 1,
       "conditions": {
-        "onReg": true,
-        "rubles": 1000,
+        "onReg": true
+      },
+      "startBonuses": {
+        "onReg": true
+      },
+      "accrualBonuses": {
+        "percent": 5
+      },
+      "combustionBonuses": 0,
+      "bonus_usage": 0
+    },
+    {
+      "id": 2,
+      "conditions": {
+        "rubles": 1000
+      },
+      "startBonuses": {
+        "percent": 5
+      },
+      "accrualBonuses": {
+        "rubles_bonuses": 0.5
+      },
+      "combustionBonuses": 100,
+      "bonus_usage": 0
+    },
+    {
+      "id": 3,
+      "conditions": {
         "bonuses": 1000
       },
       "startBonuses": {
-        "onReg": true,
-        "percent": 5,
         "bonuses": 1000
       },
       "accrualBonuses": {
-        "percent": 5,
-        "rubles_bonuses": 0.5
+        "percent": 5
       },
-      "combustionBonuses": {}
+      "combustionBonuses": 0,
+      "bonus_usage": 10
+    },
+    {
+      "id": 4,
+      "conditions": {
+        "bonuses": 1000
+      },
+      "startBonuses": {
+        "bonuses": 1000
+      },
+      "accrualBonuses": {
+        "percent": 5
+      },
+      "combustionBonuses": 0,
+      "bonus_usage": 10
     }
   ]
 }

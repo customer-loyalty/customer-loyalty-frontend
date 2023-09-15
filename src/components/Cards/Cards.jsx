@@ -4,8 +4,20 @@ import Headline from "../Headline/Headline";
 import ButtonLK from "../ButtonLK/Button";
 import shape from "../../images/lk/shape.svg";
 import Card from "../Card/Card";
+import cards from "../../utils/cards.json";
 
 export default function Cards() {
+  const res = cards.cards.map((item) => (
+    <Card
+      key={item.id}
+      type="Пользовательская"
+      conditions={item.conditions}
+      startBonuses={item.startBonuses}
+      accrualBonuses={item.accrualBonuses}
+      combustionBonuses={item.combustionBonuses}
+      writeOfBonuses={item.bonus_usage}
+    />
+  ));
   return (
     <main className={styles.content}>
       <Headline title="Карты" />
@@ -17,40 +29,7 @@ export default function Cards() {
           text="Создать карту"
         />
       </div>
-      <div className={styles.cards}>
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-      </div>
+      <div className={styles.cards}>{res}</div>
     </main>
   );
 }
