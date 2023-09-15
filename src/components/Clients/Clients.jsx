@@ -13,7 +13,7 @@ import exelHovered from "../../images/lk/exelHovered.svg";
 import filterHovered from "../../images/lk/filterHovered.svg";
 import clients from "../../utils/clients.json";
 
-function Clients({ setActive }) {
+function Clients({ openPopupAddClient }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [data] = useState(clients.clients);
@@ -39,7 +39,7 @@ function Clients({ setActive }) {
             hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
             text="Добавить клиента"
             onClick={() => {
-              setActive(true);
+                openPopupAddClient();
             }}
           />
           <div
