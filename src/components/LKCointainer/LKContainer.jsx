@@ -7,27 +7,22 @@ import Cards from "../Cards/Cards";
 import Clients from "../Clients/Clients";
 import Account from "../Account/Account";
 import Mailing from "../Mailing/Mailing";
-import Modal from "../Modal/Modal";
+import Popup from "../Popup/Popup";
 import AddClient from "../AddClient/AddClient";
 
-function LKContainer({
-  modalAddClientActive,
-  setModalAddClientActive,
-  closeModal,
-}) {
+function LKContainer({openPopupAddClient, popupAddClientActive,closePopup}){
   return (
     <div className={styles.container}>
-      <Modal
-        modalAddClientActive={modalAddClientActive}
-        closeModal={closeModal}
-      >
-        <AddClient />
-      </Modal>
+        <Popup popupAddClientActive={popupAddClientActive} closePopup={closePopup}>
+            <AddClient
+                closePopup={closePopup}
+                popupAddClientActive={popupAddClientActive}/>
+        </Popup>
       <Menu />
       <Routes>
         <Route
           path="/clients"
-          element={<Clients setActive={setModalAddClientActive} />}
+          element={<Clients openPopupAddClient={openPopupAddClient} />}
         />
         <Route path="/cards" element={<Cards />} />
         <Route path="/account" element={<Account />} />

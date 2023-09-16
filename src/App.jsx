@@ -4,10 +4,13 @@ import LKContainer from "./components/LKCointainer/LKContainer";
 import PromoPage from "./components/pages/promo/page";
 
 function App() {
-  const [modalAddClientActive, setModalAddClientActive] = useState(false);
-  const closeModal = () => {
-    setModalAddClientActive(false);
+  const [popupAddClientActive, setPopupAddClientActive] = useState(false);
+  const closePopup = () => {
+    setPopupAddClientActive(false);
   };
+  const openPopupAddClient = () => {
+      setPopupAddClientActive(true);
+  }
   return (
     <Routes>
       <Route exact path="/" element={<PromoPage />} />
@@ -15,9 +18,10 @@ function App() {
         path="/lk/*"
         element={
           <LKContainer
-            modalAddClientActive={modalAddClientActive}
-            setModalAddClientActive={setModalAddClientActive}
-            closeModal={closeModal}
+            popupAddClientActive={popupAddClientActive}
+            setPopupAddClientActive={setPopupAddClientActive}
+            closePopup={closePopup}
+            openPopupAddClient={openPopupAddClient}
           />
         }
       />
