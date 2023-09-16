@@ -89,7 +89,7 @@ function Menu() {
               <Link
                 to="clients"
                 className={`${styles.menu__item} ${
-                  location.pathname === "/admin/clients"
+                  location.pathname === "/lk/clients"
                     ? styles.menu__item_active
                     : ""
                 }`}
@@ -102,7 +102,7 @@ function Menu() {
               <Link
                 to="cards"
                 className={`${styles.menu__item} ${
-                  location.pathname === "/admin/cards"
+                  location.pathname === "/lk/cards"
                     ? styles.menu__item_active
                     : ""
                 }`}
@@ -115,7 +115,7 @@ function Menu() {
               <Link
                 to="account"
                 className={`${styles.menu__item} ${
-                  location.pathname === "/admin/account"
+                  location.pathname === "/lk/account"
                     ? styles.menu__item_active
                     : ""
                 }`}
@@ -128,7 +128,7 @@ function Menu() {
               <Link
                 to="mailing"
                 className={`${styles.menu__item} ${
-                  location.pathname === "/admin/mailing"
+                  location.pathname === "/lk/mailing"
                     ? styles.menu__item_active
                     : ""
                 }`}

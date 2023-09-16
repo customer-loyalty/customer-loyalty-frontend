@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<PromoPage />} />
       <Route
-        path="/admin/*"
+        path="/lk/*"
         element={
           <LKContainer
             modalAddClientActive={modalAddClientActive}
