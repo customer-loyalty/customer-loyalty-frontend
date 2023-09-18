@@ -6,17 +6,18 @@ import styles from "./TableClients.module.css";
 export default function TableClients({
   currentItems,
   currentPage,
+  paginateActivation,
   paginate,
   totalPages,
   data,
 }) {
   const res = currentItems.map((item) => (
     <tr className={styles.content__row} key={item.id}>
-      <td className={styles.content__data}>{item.cardId}</td>
+      <td className={styles.content__data}>{item.card.cardId}</td>
       <td className={styles.content__data}>{item.reg}</td>
-      <td className={styles.content__data}>{item.phone}</td>
-      <td className={styles.content__data}>{item.cardType}</td>
-      <td className={styles.content__data}>{item.telegram}</td>
+      <td className={styles.content__data}>{item.phone_number}</td>
+      <td className={styles.content__data}>{item.card.cardType}</td>
+      <td className={styles.content__data}>{item.mail}</td>
       <td className={styles.content__data}>{item.gender}</td>
       <td className={styles.content__data}>{item.surname}</td>
       <td className={styles.content__data}>{item.name}</td>
@@ -45,36 +46,38 @@ export default function TableClients({
         </thead>
         <tbody className={styles.content}>{res}</tbody>
       </table>
-      <nav className={styles.nav}>
-        <button
-          className={styles.nav__button}
-          onClick={() => paginate(currentPage - 1)}
-          type="button"
-          disabled={currentPage === 1}
-        >
-          &lArr; Назад
-        </button>
-        {data.slice(0, totalPages).map((_, index) => (
+      {paginateActivation ? (
+        <nav className={styles.nav}>
           <button
-            className={`${styles.nav__digit} ${
-              currentPage === index + 1 ? styles.nav__digit_active : ""
-            }`}
+            className={styles.nav__button}
+            onClick={() => paginate(currentPage - 1)}
             type="button"
-            onClick={() => paginate(index + 1)}
-            key={index}
+            disabled={currentPage === 1}
           >
-            {index + 1}
+            &lArr; Назад
           </button>
-        ))}
-        <button
-          className={styles.nav__button}
-          onClick={() => paginate(currentPage + 1)}
-          type="button"
-          disabled={currentPage === totalPages}
-        >
-          Вперед &rArr;
-        </button>
-      </nav>
+          {data.slice(0, totalPages).map((_, index) => (
+            <button
+              className={`${styles.nav__digit} ${
+                currentPage === index + 1 ? styles.nav__digit_active : ""
+              }`}
+              type="button"
+              onClick={() => paginate(index + 1)}
+              key={index}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className={styles.nav__button}
+            onClick={() => paginate(currentPage + 1)}
+            type="button"
+            disabled={currentPage === totalPages}
+          >
+            Вперед &rArr;
+          </button>
+        </nav>
+      ) : null}
     </div>
   );
 }
