@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Tariffs() {
     const data = [
@@ -12,6 +13,7 @@ function Tariffs() {
                 "автоматическая рассылка email уведомлений клиентам",
             ],
             button: "Попробовать бесплатно",
+            path: '/register'
         },
         {
             title: "Приветственный",
@@ -22,6 +24,7 @@ function Tariffs() {
                 "автоматическая рассылка email уведомлений клиентам",
             ],
             button: "Подключение тарифа доступно после пробного периода",
+            path: '/'
         },
         {
             title: "Дополненный",
@@ -33,6 +36,7 @@ function Tariffs() {
                 "автоматическая рассылка email уведомлений клиентам",
             ],
             button: "Подключение тарифа доступно после пробного периода",
+            path: '/'
         },
     ];
 
@@ -79,20 +83,20 @@ function Tariffs() {
                             ))}
                         </ul>
                         {item.title === "Пробный" ? (
-                            <button
-                                type="button"
-                                className="w-full h-[60px] rounded-[10px] bg-[#5CA1EA] text-base font-medium leading-[22px] text-[#F6F7F8] disabled:text-black"
+                            <Link
+                                to={item.path}
+                                className="flex items-center justify-center w-full h-[60px] rounded-[10px] bg-[#5CA1EA] text-base font-medium leading-[22px] text-[#F6F7F8] disabled:text-black"
                             >
                                 {item.button}
-                            </button>
+                            </Link>
                         ) : (
-                            <button
-                                type="button"
+                            <Link
+                                to={item.path}
                                 disabled
-                                className="w-full h-[60px] rounded-[10px] bg-[#A2A2A2] text-base font-medium leading-[22px] text-[#323131] disabled:text-black"
+                                className="flex items-center text-center w-full h-[60px] rounded-[10px] bg-[#A2A2A2] text-base font-medium leading-[22px] text-[#323131] disabled:text-black"
                             >
                                 {item.button}
-                            </button>
+                            </Link>
                         )}
                     </div>
                 ))}
