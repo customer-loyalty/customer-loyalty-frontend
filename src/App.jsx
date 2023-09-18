@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LKContainer from "./components/LKCointainer/LKContainer";
 import PromoPage from "./components/pages/promo/page";
+import Register from "./components/pages/register/page";
 
 function App() {
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
@@ -14,6 +15,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<PromoPage />} />
+      <Route exact path="/register" element={<Register />} />
       <Route
         path="/lk/*"
         element={
