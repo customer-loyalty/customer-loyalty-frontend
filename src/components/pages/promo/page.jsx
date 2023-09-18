@@ -1,14 +1,14 @@
 import React from "react";
 import HeaderDesktop from "./HeaderDesktop";
-import HeaderMobile from "./HeaderMobile";
-import Main from "./Main";
+import MainContent from "./Main";
+import FooterDesktop from "./FooterDesktop";
 
 function PromoPage() {
   return (
-    <div className="bg-gradient-to-b w-full from-[#B6C4CE] to-[#E7E7E7] to-99.44%">
+    <div className="w-full mx-auto bg-[#F6F7F8]">
       <HeaderDesktop />
-      <HeaderMobile />
-      <Main />
+      <MainContent />
+      <FooterDesktop />
     </div> 
 
    );
