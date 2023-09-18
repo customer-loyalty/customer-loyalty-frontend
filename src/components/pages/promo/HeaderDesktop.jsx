@@ -1,29 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from '../../../images/promoPage/logoDesktop.svg'
 
 function HeaderDesktop() {
   return ( 
-    <header className="hidden lg:flex items-center justify-between max-w-[1440px] mx-auto bg-[#b7c4ce] py-8 h-[125px]">
-      <div className="flex gap-1">
-        <img src={logo} alt="логотип" />
-        <p className="text-[17px] font-normal leading-[20px] text-[#9436A4] flex items-center">Активный <br/> Капитал</p>
-      </div>
-      <div className="flex lg:gap-[60px] xl:gap-[120px]">
+    <header className="flex items-center justify-between bg-[#F6F7F8] px-[115px] max-w-[1920px] mx-auto  py-5 h-[100px]">
+      <div className="flex gap-[31px]">
+        <div className="flex gap-6">
+          <img src={logo} alt="логотип" />
+          <p className="text-4xl font-bold text-black flex items-center">LOGO</p>
+        </div>
         <nav className="flex items-center">
           <ul className="flex gap-12">
             <li>
-              <button type="button" className="text-[18px] font-normal leading-[25px]">Возможности</button>
+              <a href='#tools' className="text-[20px] font-medium text-black">Инструменты</a>
             </li>
             <li>
-              <button type="button" className="text-[18px] font-normal leading-[25px]">Как это работает</button>
+              <a href='#tariffs' className="text-[20px] font-medium text-black">Тарифы</a>
             </li>
             <li>
-              <button type="button" className="text-[18px] font-normal leading-[25px]">Тарифы</button>
+              <a href='#contacts' className="text-[20px] font-medium text-black">Контакты</a>
             </li>
           </ul>
         </nav>
-        <button type="button" className="text-[18px] font-normal leading-[25px]">8(499) 123-12-12</button>
-        <button type="button" className="border rounded-[2px] border-[#9436A4] py-4 px-[38px] text-[18px] font-medium leading-[25px]">Личный кабинет</button>
+      </div>
+      <div className="flex lg:gap-[60px] xl:gap-[120px]">
+        <Link to='/' className="text-[20px] font-medium text-black">Личный кабинет</Link>
       </div>
     </header>
    );
