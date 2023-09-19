@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Popup.module.scss";
 
-export default function Popup({ popupAddClientActive, closePopup, children }) {
+export default function Popup({ popupActive, closePopup, children }) {
   /* eslint-disable */
   /* eslint react/prop-types: 0 */
-  const a = popupAddClientActive;
+  const a = popupActive;
   const form = document.getElementById("formAddClient");
   const handleCloseClick = () => {
     closePopup();
@@ -18,7 +18,7 @@ export default function Popup({ popupAddClientActive, closePopup, children }) {
   return (
     <div
       className={
-        popupAddClientActive ? styles.popupOverlay_active : styles.popupOverlay
+        popupActive ? styles.popupOverlay_active : styles.popupOverlay
       }
       onClick={handleClosePopup}
     >

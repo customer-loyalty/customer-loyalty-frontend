@@ -133,7 +133,7 @@ function Menu() {
                     : ""
                 }`}
               >
-                <div className={styles.menu__iconProfile} />
+                <div className={styles.menu__newsletter} />
                 <p className={styles.menu__text}>Рассылка</p>
               </Link>
             </li>

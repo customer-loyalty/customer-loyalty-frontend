@@ -38,5 +38,6 @@
   background: var(--primary-fill, #F6F7F8);
   flex-direction: column;
   justify-content: space-between;
+  overflow: scroll;
 }
 

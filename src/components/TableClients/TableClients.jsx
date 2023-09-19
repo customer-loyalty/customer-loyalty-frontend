@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./TableClients.module.css";
 
 export default function TableClients({
+  openPopupEditClient,
   currentItems,
   currentPage,
   paginateActivation,
@@ -12,7 +13,7 @@ export default function TableClients({
   data,
 }) {
   const res = currentItems.map((item) => (
-    <tr className={styles.content__row} key={item.id}>
+    <tr className={styles.content__row} key={item.id} onClick={openPopupEditClient}>
       <td className={styles.content__data}>{item.card.cardId}</td>
       <td className={styles.content__data}>{item.reg}</td>
       <td className={styles.content__data}>{item.phone_number}</td>
