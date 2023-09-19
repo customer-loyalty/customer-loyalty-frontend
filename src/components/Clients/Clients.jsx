@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Clients.module.scss";
 import TableClients from "../TableClients/TableClients";
 import TableClientsMobile from "../TableClients/TableClientsMobile";
@@ -12,13 +13,13 @@ import exel from "../../images/lk/exel.svg";
 import exelHovered from "../../images/lk/exelHovered.svg";
 // import filterHovered from "../../images/lk/filterHovered.svg";
 // import clients from "../../utils/clients.json";
-import { api } from "../../utils/Api";
+// import { api } from "../../utils/Api";
 
-function Clients({ openPopupAddClient }) {
+function Clients({ openPopupAddClient, data }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   // const [data] = useState(clients.clients);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -31,16 +32,17 @@ function Clients({ openPopupAddClient }) {
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  useEffect(() => {
-    api.authUser().then((res) => {
-      localStorage.setItem("token", res.access);
-    });
-  });
-  useEffect(() => {
-    api.getClients().then((res) => {
-      setData(res);
-    });
-  }, [currentPage]);
+  // useEffect(() => {
+  //   api.authUser().then((res) => {
+  //     localStorage.setItem("token", res.access);
+  //   });
+  // });
+  // useEffect(() => {
+  //   api.getClients().then((res) => {
+  //     console.log(res);
+  //     setData(res);
+  //   });
+  // }, [currentPage]);
 
   //
   return (

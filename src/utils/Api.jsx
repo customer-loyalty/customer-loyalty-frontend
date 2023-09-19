@@ -2,6 +2,12 @@
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
+function generateUniqueId() {
+  const randomNumber = Math.random();
+  const uniqueId = parseInt(randomNumber.toFixed(5).replace(".", ""), 10);
+  return uniqueId;
+}
+const uniqueId = generateUniqueId();
 const token = localStorage.getItem("token");
 class Api {
   constructor(options) {
@@ -16,7 +22,7 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  postClient(check, surname, name, birthday, mail, phone) {
+  postClient(check, surname, name, birthday, mail, reg, phone) {
     return fetch(`${this._server}/account/client/`, {
       method: "POST",
       headers: {
@@ -29,12 +35,12 @@ class Api {
         birthday,
         gender: "male",
         mail,
-        reg: "2023-09-18T16:49:35.438Z",
+        reg,
         phone_number: phone,
-        client: 1,
+        // client: 1,
         card: {
           cardType: 1,
-          cardId: 2147483647,
+          cardId: uniqueId,
         },
         purchase_amount: {
           total_amount: check,
@@ -51,14 +57,59 @@ class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  // getUsers(token) {
-  //   return fetch(`${this._server}/account/users/`, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((res) => this._getResponseData(res));
-  // }
+
+  getCards() {
+    return fetch(`${this._server}/account/cardtype/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getUsers() {
+    return fetch(`${this._server}/account/users/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getMe() {
+    return fetch(`${this._server}/account/users/me/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getUserAbout(username) {
+    return fetch(`${this._server}/account/users/${username}/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getBonuses() {
+    return fetch(`${this._server}/account/bonus/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getTable() {
+    return fetch(`${this._server}/statisic/admin`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
 
   postUser() {
     return fetch(`${this._server}/account/users/`, {

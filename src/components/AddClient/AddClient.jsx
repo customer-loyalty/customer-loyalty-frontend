@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
+// import { v4 as uuidv4 } from "uuid";
 import styles from "./AddClient.module.scss";
 import { api } from "../../utils/Api";
 
@@ -11,12 +12,24 @@ function AddClient({ popupAddClientActive, closePopup }) {
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
+
+  // const cardId = uuidv4().split("-")[0];
+  const reg = new Date();
+
+  // console.log(id);
+  // const day = currentDate.getDate();
+  // const month = currentDate.getMonth() + 1;
+  // const year = currentDate.getFullYear();
+  // const reg = `${year}-${month}-${day}`;
   function handleSubmit(e) {
     e.preventDefault();
     api
-      .postClient(check, surname, name, birthday, mail, `/+${phone}`, note)
+      .postClient(check, surname, name, birthday, mail, reg, `/+${phone}`, note)
       .then((res) => {
         console.log(res);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
       });
     closePopup();
   }

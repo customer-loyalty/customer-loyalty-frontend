@@ -22,7 +22,7 @@ export default function TableClients({
       <td className={styles.content__data}>{item.surname}</td>
       <td className={styles.content__data}>{item.name}</td>
       <td className={styles.content__data}>{item.birthday}</td>
-      <td className={styles.content__data}>{item.bonusBalance}</td>
+      <td className={styles.content__data}>{item.card.bonusBalance || 0}</td>
       <td className={styles.content__data}>{item.note || "-"}</td>
     </tr>
   ));

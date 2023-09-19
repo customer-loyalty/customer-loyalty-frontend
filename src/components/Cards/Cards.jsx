@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./Cards.module.css";
 import Headline from "../Headline/Headline";
@@ -5,7 +6,18 @@ import ButtonLK from "../ButtonLK/Button";
 import shape from "../../images/lk/shape.svg";
 import Card from "../Card/Card";
 
-export default function Cards() {
+export default function Cards({ data }) {
+  const res = data.map((item) => (
+    <Card
+      type={item.name}
+      conditions={item.purchase_amount || "При регистрации"}
+      startBonuses={item.initial_bonuses || 0}
+      accrualBonuses={item.rate_field || 0}
+      combustionBonuses="Не сгорают"
+      writeOfBonuses="10% от суммы покупок"
+      key={item.id}
+    />
+  ));
   return (
     <main className={styles.content}>
       <Headline title="Карты" />
@@ -17,40 +29,7 @@ export default function Cards() {
           text="Создать карту"
         />
       </div>
-      <div className={styles.cards}>
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-        <Card
-          type="Стандартная"
-          conditions="При регистрации"
-          startBonuses="100"
-          accrualBonuses="5% от покупки"
-          combustionBonuses="Не сгорают"
-          writeOfBonuses="10% от суммы покупок"
-        />
-      </div>
+      <div className={styles.cards}>{res}</div>
     </main>
   );
 }
