@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+// import React, { useEffect, useState } from "react";
 import React, { useState } from "react";
 import styles from "./Clients.module.scss";
 import TableClients from "../TableClients/TableClients";
@@ -8,15 +9,17 @@ import Button from "../ButtonLK/Button";
 import search from "../../images/lk/search.svg";
 import shape from "../../images/lk/shape.svg";
 import exel from "../../images/lk/exel.svg";
-import filter from "../../images/lk/filter.svg";
+// import filter from "../../images/lk/filter.svg";
 import exelHovered from "../../images/lk/exelHovered.svg";
-import filterHovered from "../../images/lk/filterHovered.svg";
-import clients from "../../utils/clients.json";
+// import filterHovered from "../../images/lk/filterHovered.svg";
+// import clients from "../../utils/clients.json";
+// import { api } from "../../utils/Api";
 
-function Clients({ openPopupAddClient }) {
+function Clients({ openPopupAddClient, data }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [data] = useState(clients.clients);
+  // const [data] = useState(clients.clients);
+  // const [data, setData] = useState([]);
   const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -28,6 +31,20 @@ function Clients({ openPopupAddClient }) {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // useEffect(() => {
+  //   api.authUser().then((res) => {
+  //     localStorage.setItem("token", res.access);
+  //   });
+  // });
+  // useEffect(() => {
+  //   api.getClients().then((res) => {
+  //     console.log(res);
+  //     setData(res);
+  //   });
+  // }, [currentPage]);
+
+  //
   return (
     <main className={styles.content}>
       <div>
@@ -39,7 +56,7 @@ function Clients({ openPopupAddClient }) {
             hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
             text="Добавить клиента"
             onClick={() => {
-                openPopupAddClient();
+              openPopupAddClient();
             }}
           />
           <div
@@ -73,7 +90,7 @@ function Clients({ openPopupAddClient }) {
               }}
               text="Выгрузить в exel"
             />
-            <Button
+            {/* <Button
               img={filter}
               hoverImg={filterHovered}
               style={{
@@ -87,7 +104,7 @@ function Clients({ openPopupAddClient }) {
                 marginLeft: "20px",
               }}
               text="Фильтр"
-            />
+            /> */}
           </div>
         </div>
       </div>
@@ -95,6 +112,7 @@ function Clients({ openPopupAddClient }) {
         <TableClients
           currentItems={currentItems}
           currentPage={currentPage}
+          paginateActivation={data.length > itemsPerPage}
           paginate={paginate}
           totalPages={totalPages}
           data={data}

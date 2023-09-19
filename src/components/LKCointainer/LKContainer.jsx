@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import styles from "./LKContainer.module.scss";
 import Menu from "../Menu/Menu";
@@ -9,22 +9,79 @@ import Account from "../Account/Account";
 import Mailing from "../Mailing/Mailing";
 import Popup from "../Popup/Popup";
 import AddClient from "../AddClient/AddClient";
+import { api } from "../../utils/Api";
 
-function LKContainer({openPopupAddClient, popupAddClientActive,closePopup}){
+function LKContainer({ openPopupAddClient, popupAddClientActive, closePopup }) {
+  const [clients, setClients] = useState([]);
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    api.authUser().then((res) => {
+      localStorage.setItem("token", res.access);
+    });
+  }, []);
+  // Получение данных всех разделов
+  useEffect(() => {
+    api
+      .getClients()
+      .then((res) => {
+        console.log(res);
+        setClients(res);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
+    api
+      .getCards()
+      .then((res) => {
+        // console.log(res);
+        setCards(res);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
+    // api
+    //   .getUsers()
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Ошибка: ${err}`);
+    //   });
+    api
+      .getMe()
+      .then((user) => {
+        api.getUserAbout(user.username).then((res) => {
+          console.log(res);
+        });
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
+    // api.getTable().then((res) => {
+    //   console.log(res.table);
+    // });
+  }, []);
+
   return (
     <div className={styles.container}>
-        <Popup popupAddClientActive={popupAddClientActive} closePopup={closePopup}>
-            <AddClient
-                closePopup={closePopup}
-                popupAddClientActive={popupAddClientActive}/>
-        </Popup>
+      <Popup
+        popupAddClientActive={popupAddClientActive}
+        closePopup={closePopup}
+      >
+        <AddClient
+          closePopup={closePopup}
+          popupAddClientActive={popupAddClientActive}
+        />
+      </Popup>
       <Menu />
       <Routes>
         <Route
           path="/clients"
-          element={<Clients openPopupAddClient={openPopupAddClient} />}
+          element={
+            <Clients openPopupAddClient={openPopupAddClient} data={clients} />
+          }
         />
-        <Route path="/cards" element={<Cards />} />
+        <Route path="/cards" element={<Cards data={cards} />} />
         <Route path="/account" element={<Account />} />
         <Route path="/mailing" element={<Mailing />} />
       </Routes>
