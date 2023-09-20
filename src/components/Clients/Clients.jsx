@@ -15,7 +15,7 @@ import exelHovered from "../../images/lk/exelHovered.svg";
 // import clients from "../../utils/clients.json";
 // import { api } from "../../utils/Api";
 
-function Clients({ openPopupAddClient, data }) {
+function Clients({ openPopupAddClient, openPopupEditClient, data }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   // const [data] = useState(clients.clients);
@@ -110,6 +110,7 @@ function Clients({ openPopupAddClient, data }) {
       </div>
       <div className={styles.main__table}>
         <TableClients
+            openPopupEditClient={openPopupEditClient}
           currentItems={currentItems}
           currentPage={currentPage}
           paginateActivation={data.length > itemsPerPage}
@@ -117,7 +118,7 @@ function Clients({ openPopupAddClient, data }) {
           totalPages={totalPages}
           data={data}
         />
-        <TableClientsMobile />
+        <TableClientsMobile openPopupEditClient={openPopupEditClient}/>
       </div>
     </main>
   );

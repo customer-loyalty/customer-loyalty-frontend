@@ -6,12 +6,18 @@ import Register from "./components/pages/register/page";
 
 function App() {
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
+  const [popupEditClientActive, setPopupEditClientActive] = useState(false);
   const closePopup = () => {
     setPopupAddClientActive(false);
+      setPopupEditClientActive(false);
   };
   const openPopupAddClient = () => {
       setPopupAddClientActive(true);
   }
+  const openPopupEditClient = () => {
+      setPopupEditClientActive(true);
+  }
+
   return (
     <Routes>
       <Route exact path="/" element={<PromoPage />} />
@@ -21,9 +27,10 @@ function App() {
         element={
           <LKContainer
             popupAddClientActive={popupAddClientActive}
-            setPopupAddClientActive={setPopupAddClientActive}
             closePopup={closePopup}
             openPopupAddClient={openPopupAddClient}
+            popupEditClientActive={popupEditClientActive}
+            openPopupEditClient={openPopupEditClient}
           />
         }
       />

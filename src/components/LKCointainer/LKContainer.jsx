@@ -10,8 +10,16 @@ import Mailing from "../Mailing/Mailing";
 import Popup from "../Popup/Popup";
 import AddClient from "../AddClient/AddClient";
 import { api } from "../../utils/Api";
+import EditClient from "../EditClient/EditClient";
 
-function LKContainer({ openPopupAddClient, popupAddClientActive, closePopup }) {
+function LKContainer(props) {
+    const {
+        openPopupAddClient,
+        popupAddClientActive,
+        closePopup,
+        popupEditClientActive,
+        openPopupEditClient,
+    } = props;
   const [clients, setClients] = useState([]);
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -65,7 +73,7 @@ function LKContainer({ openPopupAddClient, popupAddClientActive, closePopup }) {
   return (
     <div className={styles.container}>
       <Popup
-        popupAddClientActive={popupAddClientActive}
+        popupActive={popupAddClientActive}
         closePopup={closePopup}
       >
         <AddClient
@@ -73,12 +81,21 @@ function LKContainer({ openPopupAddClient, popupAddClientActive, closePopup }) {
           popupAddClientActive={popupAddClientActive}
         />
       </Popup>
+        <Popup
+            popupActive={popupEditClientActive}
+            closePopup={closePopup}
+        >
+            <EditClient
+                closePopup={closePopup}
+                popupEditClientActive={popupEditClientActive}
+            />
+        </Popup>
       <Menu />
       <Routes>
         <Route
           path="/clients"
           element={
-            <Clients openPopupAddClient={openPopupAddClient} data={clients} />
+            <Clients openPopupAddClient={openPopupAddClient} openPopupEditClient={openPopupEditClient} data={clients} />
           }
         />
         <Route path="/cards" element={<Cards data={cards} />} />
