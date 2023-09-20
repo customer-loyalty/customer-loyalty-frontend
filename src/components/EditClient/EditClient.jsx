@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import styles from "./EditClient.module.scss";
 
-function EditClient({ popupEditClientActive, closePopup }) {
+function EditClient({ popupEditClientActive, closePopup, initData }) {
+  console.log(initData);
   const [check, setCheck] = useState(0);
-  const [surname, setSurname] = useState("");
-  const [name, setName] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [mail, setMail] = useState("");
+  const [surname, setSurname] = useState(initData.surname);
+  const [name, setName] = useState(initData.name);
+  const [birthday, setBirthday] = useState(initData.birthday);
+  const [mail, setMail] = useState(initData.mail);
   const [phone, setPhone] = useState("");
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(initData.note);
+  // console.log(surname, name);
+  // console.log(clients);
+  // const findObjectById = (id) => {
+  //   const targetClient = clients.find((obj) => obj.id === initData.id);
+  // };
   function handleCheckChange(e) {
     setCheck(e.target.value);
   }

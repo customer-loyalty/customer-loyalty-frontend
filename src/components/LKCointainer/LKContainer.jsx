@@ -11,16 +11,14 @@ import AddClient from "../AddClient/AddClient";
 import { api } from "../../utils/Api";
 import EditClient from "../EditClient/EditClient";
 
-function LKContainer(props) {
-  const {
-    openPopupAddClient,
-    popupAddClientActive,
-    closePopup,
-    popupEditClientActive,
-    openPopupEditClient,
-  } = props;
+function LKContainer() {
   const [clients, setClients] = useState([]);
+  const [editClient] = useState({});
+  // const [editClient, setEditClient] = useState({});
   const [cards, setCards] = useState([]);
+  const [popupAddClientActive, setPopupAddClientActive] = useState(false);
+  const [popupEditClientActive, setPopupEditClientActive] = useState(false);
+
   useEffect(() => {
     api.authUser().then((res) => {
       localStorage.setItem("token", res.access);
@@ -31,7 +29,7 @@ function LKContainer(props) {
     api
       .getClients()
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setClients(res);
       })
       .catch((err) => {
@@ -54,21 +52,34 @@ function LKContainer(props) {
     //   .catch((err) => {
     //     console.log(`Ошибка: ${err}`);
     //   });
-    api
-      .getMe()
-      .then((user) => {
-        api.getUserAbout(user.username).then((res) => {
-          console.log(res);
-        });
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      });
+    // api
+    //   .getMe()
+    //   .then((user) => {
+    //     api.getUserAbout(user.username).then((res) => {
+    //       console.log(res);
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Ошибка: ${err}`);
+    //   });
     // api.getTable().then((res) => {
     //   console.log(res.table);
     // });
   }, []);
-
+  const closePopup = () => {
+    setPopupAddClientActive(false);
+    setPopupEditClientActive(false);
+  };
+  const openPopupAddClient = () => {
+    setPopupAddClientActive(true);
+  };
+  const openPopupEditClient = () => {
+    // api.getClientId(e.target.parentNode.id).then((res) => {
+    //   setEditClient(res);
+    //   setPopupEditClientActive(true);
+    // });
+    setPopupEditClientActive(true);
+  };
   return (
     <div className={styles.container}>
       <Popup popupActive={popupAddClientActive} closePopup={closePopup}>
@@ -81,6 +92,7 @@ function LKContainer(props) {
         <EditClient
           closePopup={closePopup}
           popupEditClientActive={popupEditClientActive}
+          initData={editClient}
         />
       </Popup>
       <Menu />
