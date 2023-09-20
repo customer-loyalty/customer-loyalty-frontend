@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // import React, { useEffect, useState } from "react";
 import React, { useState } from "react";
 import styles from "./Clients.module.scss";
@@ -110,7 +109,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
       </div>
       <div className={styles.main__table}>
         <TableClients
-            openPopupEditClient={openPopupEditClient}
+          openPopupEditClient={openPopupEditClient}
           currentItems={currentItems}
           currentPage={currentPage}
           paginateActivation={data.length > itemsPerPage}
@@ -118,7 +117,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
           totalPages={totalPages}
           data={data}
         />
-        <TableClientsMobile openPopupEditClient={openPopupEditClient}/>
+        <TableClientsMobile openPopupEditClient={openPopupEditClient} />
       </div>
     </main>
   );

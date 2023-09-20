@@ -58,6 +58,15 @@ class Api {
     }).then((res) => this._getResponseData(res));
   }
 
+  getClientId(id) {
+    return fetch(`${this._server}/account/client/${id}/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
   getCards() {
     return fetch(`${this._server}/account/cardtype/`, {
       method: "GET",

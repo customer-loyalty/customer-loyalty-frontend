@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import styles from "./LKContainer.module.scss";
@@ -13,13 +12,13 @@ import { api } from "../../utils/Api";
 import EditClient from "../EditClient/EditClient";
 
 function LKContainer(props) {
-    const {
-        openPopupAddClient,
-        popupAddClientActive,
-        closePopup,
-        popupEditClientActive,
-        openPopupEditClient,
-    } = props;
+  const {
+    openPopupAddClient,
+    popupAddClientActive,
+    closePopup,
+    popupEditClientActive,
+    openPopupEditClient,
+  } = props;
   const [clients, setClients] = useState([]);
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -72,30 +71,28 @@ function LKContainer(props) {
 
   return (
     <div className={styles.container}>
-      <Popup
-        popupActive={popupAddClientActive}
-        closePopup={closePopup}
-      >
+      <Popup popupActive={popupAddClientActive} closePopup={closePopup}>
         <AddClient
           closePopup={closePopup}
           popupAddClientActive={popupAddClientActive}
         />
       </Popup>
-        <Popup
-            popupActive={popupEditClientActive}
-            closePopup={closePopup}
-        >
-            <EditClient
-                closePopup={closePopup}
-                popupEditClientActive={popupEditClientActive}
-            />
-        </Popup>
+      <Popup popupActive={popupEditClientActive} closePopup={closePopup}>
+        <EditClient
+          closePopup={closePopup}
+          popupEditClientActive={popupEditClientActive}
+        />
+      </Popup>
       <Menu />
       <Routes>
         <Route
           path="/clients"
           element={
-            <Clients openPopupAddClient={openPopupAddClient} openPopupEditClient={openPopupEditClient} data={clients} />
+            <Clients
+              openPopupAddClient={openPopupAddClient}
+              openPopupEditClient={openPopupEditClient}
+              data={clients}
+            />
           }
         />
         <Route path="/cards" element={<Cards data={cards} />} />

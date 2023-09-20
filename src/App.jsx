@@ -3,20 +3,24 @@ import { Routes, Route } from "react-router-dom";
 import LKContainer from "./components/LKCointainer/LKContainer";
 import PromoPage from "./components/pages/promo/page";
 import Register from "./components/pages/register/page";
+import { api } from "./utils/Api";
 
 function App() {
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
   const closePopup = () => {
     setPopupAddClientActive(false);
-      setPopupEditClientActive(false);
+    setPopupEditClientActive(false);
   };
   const openPopupAddClient = () => {
-      setPopupAddClientActive(true);
-  }
-  const openPopupEditClient = () => {
+    setPopupAddClientActive(true);
+  };
+  const openPopupEditClient = (e) => {
+    api.getClientId(e.target.parentNode.id).then((res) => {
       setPopupEditClientActive(true);
-  }
+      console.log(res);
+    });
+  };
 
   return (
     <Routes>

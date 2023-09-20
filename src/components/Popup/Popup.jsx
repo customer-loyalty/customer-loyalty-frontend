@@ -2,10 +2,8 @@ import React from "react";
 import styles from "./Popup.module.scss";
 
 export default function Popup({ popupActive, closePopup, children }) {
-  /* eslint-disable */
-  /* eslint react/prop-types: 0 */
-  const a = popupActive;
-  const form = document.getElementById("formAddClient");
+  // const a = popupActive;
+  // const form = document.getElementById("formAddClient");
   const handleCloseClick = () => {
     closePopup();
     // form.reset();
@@ -17,10 +15,10 @@ export default function Popup({ popupActive, closePopup, children }) {
   };
   return (
     <div
-      className={
-        popupActive ? styles.popupOverlay_active : styles.popupOverlay
-      }
-      onClick={handleClosePopup}
+      className={popupActive ? styles.popupOverlay_active : styles.popupOverlay}
+      // onClick={handleClosePopup}
+      role="presentation"
+      onMouseDown={handleClosePopup}
     >
       <section className={styles.popup}>{children}</section>
     </div>
