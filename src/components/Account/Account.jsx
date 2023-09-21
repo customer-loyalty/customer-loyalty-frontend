@@ -7,10 +7,15 @@ import info from "../../images/lk/info.svg";
 import director from "../../images/lk/director.svg";
 import contacts from "../../images/lk/contacts.svg";
 import card from "../../images/lk/card.jpg";
+import Popup from "../Popup/Popup";
+import EditAccount from "../EditAccount/EditAccount";
 
-export default function Account() {
+export default function Account({openPopupEditAccount, closePopup, popupEditAccountActive}) {
   return (
     <main className={styles.content}>
+      <Popup closePopup={closePopup} popupActive={popupEditAccountActive}>
+        <EditAccount closePopup={closePopup}/>
+      </Popup>
       <Headline title="Аккаунт" />
       <div className={styles.buttons}>
         <ButtonLK
@@ -18,6 +23,7 @@ export default function Account() {
           style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
           hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
           text="Редактировать"
+          onClick={openPopupEditAccount}
         />
       </div>
       <div className={styles.info}>

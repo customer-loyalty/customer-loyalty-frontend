@@ -16,6 +16,8 @@ function LKContainer() {
   const [cards, setCards] = useState([]);
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
+  const [popupEditAccountActive, setPopupEditAccountActive] = useState(false);
+
   const [check, setCheck] = useState("");
   const [surname, setSurname] = useState("");
   const [name, setName] = useState("");
@@ -75,10 +77,15 @@ function LKContainer() {
   const closePopup = () => {
     setPopupAddClientActive(false);
     setPopupEditClientActive(false);
+    setPopupEditAccountActive(false);
   };
   const openPopupAddClient = () => {
     setPopupAddClientActive(true);
   };
+
+  const openPopupEditAccount = () => {
+    setPopupEditAccountActive(true);
+  }
   const openPopupEditClient = (e) => {
     api.getClientId(e.target.parentNode.id).then((res) => {
       setSurname(res.surname);
@@ -134,7 +141,7 @@ function LKContainer() {
           }
         />
         <Route path="/cards" element={<Cards data={cards} />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/account" element={<Account openPopupEditAccount={openPopupEditAccount} closePopup={closePopup} popupEditAccountActive={popupEditAccountActive}/>} />
         <Route path="/mailing" element={<Mailing />} />
       </Routes>
     </div>

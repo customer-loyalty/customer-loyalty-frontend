@@ -65,6 +65,7 @@ function EditClient({
       });
     closePopup();
   }
+
   return (
     <div
       className={popupEditClientActive ? styles.section_active : styles.section}

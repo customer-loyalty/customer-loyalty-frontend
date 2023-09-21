@@ -19,8 +19,10 @@ export default function Popup({ popupActive, closePopup, children }) {
       // onClick={handleClosePopup}
       role="presentation"
       onMouseDown={handleClosePopup}
-    >
+    >{children}
+{/*
       <section className={styles.popup}>{children}</section>
+*/}
     </div>
   );
 }

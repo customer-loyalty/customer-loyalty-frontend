@@ -8,6 +8,7 @@
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   margin-left: -30px;
+  position: relative;
 }
 .buttons {
   width: 100%;
