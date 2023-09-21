@@ -47,7 +47,7 @@ export default function Account() {
         <div className={styles.info__card}>
           <div className={styles.info__header}>
             <img className={styles.info__icon} src={contacts} alt="иконка" />
-            <h2 className={styles.info__title}>Конаткты</h2>
+            <h2 className={styles.info__title}>Контакты</h2>
           </div>
           <ul className={styles.info__content}>
             <li className={styles.info__point}>

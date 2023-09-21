@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // import React, { useEffect, useState } from "react";
 import React, { useState } from "react";
 import styles from "./Clients.module.scss";
@@ -18,33 +17,20 @@ import exelHovered from "../../images/lk/exelHovered.svg";
 function Clients({ openPopupAddClient, openPopupEditClient, data }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  // const [data] = useState(clients.clients);
-  // const [data, setData] = useState([]);
   const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const filteredData = data.filter((row) =>
     Object.values(row).some((value) =>
-      value.toString().toLowerCase().includes(searchValue.toLowerCase())
+      value === null
+        ? []
+        : value.toString().toLowerCase().includes(searchValue.toLowerCase())
     )
   );
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // useEffect(() => {
-  //   api.authUser().then((res) => {
-  //     localStorage.setItem("token", res.access);
-  //   });
-  // });
-  // useEffect(() => {
-  //   api.getClients().then((res) => {
-  //     console.log(res);
-  //     setData(res);
-  //   });
-  // }, [currentPage]);
-
-  //
   return (
     <main className={styles.content}>
       <div>
@@ -88,7 +74,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
                 color: "#FFFFFF",
                 marginLeft: "60px",
               }}
-              text="Выгрузить в exel"
+              text="Выгрузить в excel"
             />
             {/* <Button
               img={filter}
@@ -110,7 +96,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
       </div>
       <div className={styles.main__table}>
         <TableClients
-            openPopupEditClient={openPopupEditClient}
+          openPopupEditClient={openPopupEditClient}
           currentItems={currentItems}
           currentPage={currentPage}
           paginateActivation={data.length > itemsPerPage}
@@ -118,7 +104,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
           totalPages={totalPages}
           data={data}
         />
-        <TableClientsMobile openPopupEditClient={openPopupEditClient}/>
+        <TableClientsMobile openPopupEditClient={openPopupEditClient} />
       </div>
     </main>
   );

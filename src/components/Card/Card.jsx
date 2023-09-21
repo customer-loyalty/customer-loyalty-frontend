@@ -59,7 +59,7 @@ export default function Card({
             <p className={styles.parameters__value}>{accrualBonuses}</p>
           </li>
           <li className={styles.parameters__point}>
-            Сгорание бонусы
+            Сгорание бонусов
             <p className={styles.parameters__value}>{combustionBonuses}</p>
           </li>
           <li className={styles.parameters__point}>

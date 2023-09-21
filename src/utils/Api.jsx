@@ -49,8 +49,44 @@ class Api {
     }).then((res) => this._getResponseData(res));
   }
 
+  patchClient(id, check, surname, name, birthday, mail, reg, phone) {
+    return fetch(`${this._server}/account/client/${id}/`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        surname,
+        birthday,
+        gender: "male",
+        mail,
+        reg,
+        phone_number: phone,
+        // client: 1,
+        card: {
+          cardType: 1,
+          cardId: uniqueId,
+        },
+        purchase_amount: {
+          total_amount: check,
+        },
+      }),
+    }).then((res) => this._getResponseData(res));
+  }
+
   getClients() {
     return fetch(`${this._server}/account/client/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => this._getResponseData(res));
+  }
+
+  getClientId(id) {
+    return fetch(`${this._server}/account/client/${id}/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

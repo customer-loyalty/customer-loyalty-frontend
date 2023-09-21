@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-// import { v4 as uuidv4 } from "uuid";
 import styles from "./AddClient.module.scss";
 import { api } from "../../utils/Api";
 
@@ -12,15 +10,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
-
-  // const cardId = uuidv4().split("-")[0];
   const reg = new Date();
-
-  // console.log(id);
-  // const day = currentDate.getDate();
-  // const month = currentDate.getMonth() + 1;
-  // const year = currentDate.getFullYear();
-  // const reg = `${year}-${month}-${day}`;
   function handleSubmit(e) {
     e.preventDefault();
     api
@@ -76,6 +66,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="check"
             value={check}
             onChange={handleCheckChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -87,6 +78,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="surname"
             value={surname}
             onChange={handleSurnameChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -98,6 +90,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="name"
             value={name}
             onChange={handleNameChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -109,6 +102,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="birthday"
             value={birthday}
             onChange={handleBirthdayChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -120,6 +114,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="mail"
             value={mail}
             onChange={handleMailChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -131,6 +126,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="phone"
             value={phone}
             onChange={handlePhoneChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>

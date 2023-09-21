@@ -13,7 +13,12 @@ export default function TableClients({
   data,
 }) {
   const res = currentItems.map((item) => (
-    <tr className={styles.content__row} key={item.id} onClick={openPopupEditClient}>
+    <tr
+      className={styles.content__row}
+      key={item.id}
+      id={item.id}
+      onClick={openPopupEditClient}
+    >
       <td className={styles.content__data}>{item.card.cardId}</td>
       <td className={styles.content__data}>{item.reg}</td>
       <td className={styles.content__data}>{item.phone_number}</td>
