@@ -7,9 +7,11 @@ import info from "../../images/lk/info.svg";
 import director from "../../images/lk/director.svg";
 import contacts from "../../images/lk/contacts.svg";
 import card from "../../images/lk/card.jpg";
-import Loader from "../Loader/Loader";
+import Popup from "../Popup/Popup";
+import EditAccount from "../EditAccount/EditAccount";
 
-export default function Account({ about, cards, isLoading }) {
+import Loader from "../Loader/Loader";
+export default function Account({ about, cards, isLoading, openPopupEditAccount, closePopup, popupEditAccountActive }) {
   const res = cards.map((item) => (
     <li className={styles.info__point} key={item.id}>
       Уровень {item.id}
@@ -18,6 +20,9 @@ export default function Account({ about, cards, isLoading }) {
   ));
   return (
     <main className={styles.content}>
+      <Popup closePopup={closePopup} popupActive={popupEditAccountActive}>
+        <EditAccount closePopup={closePopup}/>
+      </Popup>
       <Headline title="Аккаунт" />
       <div className={styles.buttons}>
         <ButtonLK
@@ -25,6 +30,7 @@ export default function Account({ about, cards, isLoading }) {
           style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
           hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
           text="Редактировать"
+          onClick={openPopupEditAccount}
         />
       </div>
       {isLoading ? (

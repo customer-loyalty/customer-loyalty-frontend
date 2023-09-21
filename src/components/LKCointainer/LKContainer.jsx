@@ -19,6 +19,8 @@ function LKContainer() {
   // управление попапами
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
+  const [popupEditAccountActive, setPopupEditAccountActive] = useState(false);
+
   // данные формы редактирования аккаунта
   const [check, setCheck] = useState("");
   const [surname, setSurname] = useState("");
@@ -82,10 +84,15 @@ function LKContainer() {
   const closePopup = () => {
     setPopupAddClientActive(false);
     setPopupEditClientActive(false);
+    setPopupEditAccountActive(false);
   };
   const openPopupAddClient = () => {
     setPopupAddClientActive(true);
   };
+
+  const openPopupEditAccount = () => {
+    setPopupEditAccountActive(true);
+  }
   const openPopupEditClient = (e) => {
     api.getClientId(e.target.parentNode.id).then((res) => {
       setSurname(res.surname);
@@ -148,7 +155,7 @@ function LKContainer() {
         <Route
           path="/account"
           element={
-            <Account about={about} cards={cards} isLoading={isLoading} />
+            <Account about={about} cards={cards} isLoading={isLoading} openPopupEditAccount={openPopupEditAccount} closePopup={closePopup} popupEditAccountActive={popupEditAccountActive}/>
           }
         />
         <Route path="/mailing" element={<Mailing />} />

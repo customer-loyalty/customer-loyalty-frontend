@@ -1,14 +1,8 @@
 .menu {
   max-width: 350px;
   width: 100%;
-  /*min-height: 1024px;*/
   height: 100vh;
-  /*  background: var(
-    --primary-bg,
-    linear-gradient(140deg, #517fa4 0%, #243949 100%)
-  );*/
   background: var(--primary-text, #1e1d1d);
-  /*padding: 60px 40px;*/
   padding: 40px;
   box-sizing: border-box;
   display: flex;

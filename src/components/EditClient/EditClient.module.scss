@@ -11,7 +11,19 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: relative;
+
+  max-width: 640px;
+  width: 100%;
+  padding: 40px 40px 60px 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--primary-fill, #F6F7F8);
+  box-shadow: -4px 0px 20px 0px rgba(32, 35, 42, 0.10);
+  cursor: default;
+  background: var(--primary-fill, #F6F7F8);
+  justify-content: space-between;
+  overflow-y: auto;
 }
 
 .heading {
@@ -93,7 +105,6 @@
   width: 100%;
   justify-content: flex-end;
   margin-top: 65px;
-  padding: 20px 40px 60px;
 }
 .cancelBtn{
   padding: 12px 20px;
@@ -173,8 +184,8 @@
 }
 .writeOffBonusesContainer{
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 40px;
+  right: 40px;
   width: 191px;
   padding: 12px 20px;
   display: flex;

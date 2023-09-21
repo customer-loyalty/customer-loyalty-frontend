@@ -56,6 +56,7 @@ function Menu() {
     <div
       className={`${styles.menu} ${burgerImageVisible ? styles.menu_open : ""}`}
     >
+
       <div
         className={styles.menu__container}
         style={{ rowGap: height < 760 && width > 390 && 20 }}
