@@ -13,11 +13,17 @@ import EditClient from "../EditClient/EditClient";
 
 function LKContainer() {
   const [clients, setClients] = useState([]);
-  const [editClient] = useState({});
-  // const [editClient, setEditClient] = useState({});
   const [cards, setCards] = useState([]);
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
+  const [check, setCheck] = useState("");
+  const [surname, setSurname] = useState("");
+  const [name, setName] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [mail, setMail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     api.authUser().then((res) => {
@@ -73,12 +79,18 @@ function LKContainer() {
   const openPopupAddClient = () => {
     setPopupAddClientActive(true);
   };
-  const openPopupEditClient = () => {
-    // api.getClientId(e.target.parentNode.id).then((res) => {
-    //   setEditClient(res);
-    //   setPopupEditClientActive(true);
-    // });
-    setPopupEditClientActive(true);
+  const openPopupEditClient = (e) => {
+    api.getClientId(e.target.parentNode.id).then((res) => {
+      setSurname(res.surname);
+      setName(res.name);
+      setBirthday(res.birthday);
+      setMail(res.mail);
+      setNote(res.note || "");
+      setPhone(res.phone_number);
+      setCheck(0);
+      setId(e.target.parentNode.id);
+      setPopupEditClientActive(true);
+    });
   };
   return (
     <div className={styles.container}>
@@ -92,7 +104,21 @@ function LKContainer() {
         <EditClient
           closePopup={closePopup}
           popupEditClientActive={popupEditClientActive}
-          initData={editClient}
+          check={check}
+          setCheck={setCheck}
+          surname={surname}
+          setSurname={setSurname}
+          name={name}
+          setName={setName}
+          birthday={birthday}
+          setBirthday={setBirthday}
+          mail={mail}
+          setMail={setMail}
+          phone={phone}
+          setPhone={setPhone}
+          note={note}
+          setNote={setNote}
+          id={id}
         />
       </Popup>
       <Menu />

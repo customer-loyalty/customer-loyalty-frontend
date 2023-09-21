@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./EditClient.module.scss";
+import { api } from "../../utils/Api";
 
-function EditClient({ popupEditClientActive, closePopup, initData }) {
-  console.log(initData);
-  const [check, setCheck] = useState(0);
-  const [surname, setSurname] = useState(initData.surname);
-  const [name, setName] = useState(initData.name);
-  const [birthday, setBirthday] = useState(initData.birthday);
-  const [mail, setMail] = useState(initData.mail);
-  const [phone, setPhone] = useState("");
-  const [note, setNote] = useState(initData.note);
-  // console.log(surname, name);
-  // console.log(clients);
-  // const findObjectById = (id) => {
-  //   const targetClient = clients.find((obj) => obj.id === initData.id);
-  // };
+function EditClient({
+  popupEditClientActive,
+  closePopup,
+  check,
+  setCheck,
+  surname,
+  setSurname,
+  name,
+  setName,
+  birthday,
+  setBirthday,
+  mail,
+  setMail,
+  phone,
+  setPhone,
+  note,
+  setNote,
+  id,
+}) {
+  const reg = new Date();
   function handleCheckChange(e) {
     setCheck(e.target.value);
   }
@@ -35,6 +42,28 @@ function EditClient({ popupEditClientActive, closePopup, initData }) {
   }
   function handleNoteChange(e) {
     setNote(e.target.value);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    api
+      .patchClient(
+        id,
+        check,
+        surname,
+        name,
+        birthday,
+        mail,
+        reg,
+        `/+${phone}`,
+        note
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
+    closePopup();
   }
   return (
     <div
@@ -63,7 +92,7 @@ function EditClient({ popupEditClientActive, closePopup, initData }) {
         <div className={styles.newCheckContainer}>
           <p className={styles.newCheck}>Новый чек</p>
           <input
-            type="number"
+            type="text"
             className={styles.newCheckNumber}
             name="newCheck"
             value={check}
@@ -127,7 +156,7 @@ function EditClient({ popupEditClientActive, closePopup, initData }) {
         <div className={styles.formElementContainer}>
           <p className={styles.titleInput}>Номер телефона *</p>
           <input
-            type="number"
+            type="text"
             className={styles.input}
             placeholder="+7 (___) ___-__-__"
             name="phone"
@@ -151,7 +180,12 @@ function EditClient({ popupEditClientActive, closePopup, initData }) {
         <button className={styles.cancelBtn} type="button" onClick={closePopup}>
           Отменить
         </button>
-        <button className={styles.submitBtn} type="submit" form="formAddClient">
+        <button
+          className={styles.submitBtn}
+          type="submit"
+          form="formAddClient"
+          onClick={handleSubmit}
+        >
           <div className={styles.submitBtnIcon} />
           Сохранить изменения
         </button>

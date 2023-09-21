@@ -66,6 +66,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="check"
             value={check}
             onChange={handleCheckChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -77,6 +78,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="surname"
             value={surname}
             onChange={handleSurnameChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -88,6 +90,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="name"
             value={name}
             onChange={handleNameChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -99,6 +102,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="birthday"
             value={birthday}
             onChange={handleBirthdayChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -110,6 +114,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="mail"
             value={mail}
             onChange={handleMailChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
@@ -121,6 +126,7 @@ function AddClient({ popupAddClientActive, closePopup }) {
             name="phone"
             value={phone}
             onChange={handlePhoneChange}
+            required
           />
         </div>
         <div className={styles.formElementContainer}>
