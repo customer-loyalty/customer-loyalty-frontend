@@ -36,7 +36,7 @@ function HeaderDesktop() {
         </nav>
       </div>
       <div className="flex lg:gap-[60px] xl:gap-[120px]">
-        <Link to="/lk/clients" className="text-[20px] font-medium text-black">
+        <Link to="/login" className="text-[20px] font-medium text-black">
           Личный кабинет
         </Link>
       </div>
