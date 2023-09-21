@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from "react";
 import React, { useState } from "react";
+import * as XLSX from "xlsx";
 import styles from "./Clients.module.scss";
 import TableClients from "../TableClients/TableClients";
 import TableClientsMobile from "../TableClients/TableClientsMobile";
@@ -14,7 +15,7 @@ import exelHovered from "../../images/lk/exelHovered.svg";
 // import clients from "../../utils/clients.json";
 // import { api } from "../../utils/Api";
 
-function Clients({ openPopupAddClient, openPopupEditClient, data }) {
+function Clients({ openPopupAddClient, openPopupEditClient, data, isLoading }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -30,7 +31,15 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  const exportToExcel = (jsonData) => {
+    const worksheet = XLSX.utils.json_to_sheet(jsonData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+    XLSX.writeFile(workbook, "клиенты.xlsx");
+  };
+  const handleTableDownload = () => {
+    exportToExcel(data);
+  };
   return (
     <main className={styles.content}>
       <div>
@@ -75,6 +84,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
                 marginLeft: "60px",
               }}
               text="Выгрузить в excel"
+              onClick={handleTableDownload}
             />
             {/* <Button
               img={filter}
@@ -103,6 +113,7 @@ function Clients({ openPopupAddClient, openPopupEditClient, data }) {
           paginate={paginate}
           totalPages={totalPages}
           data={data}
+          isLoading={isLoading}
         />
         <TableClientsMobile openPopupEditClient={openPopupEditClient} />
       </div>

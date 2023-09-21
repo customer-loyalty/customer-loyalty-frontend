@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./TableClients.module.css";
+import Loader from "../Loader/Loader";
 
 export default function TableClients({
   openPopupEditClient,
@@ -11,6 +12,7 @@ export default function TableClients({
   paginate,
   totalPages,
   data,
+  isLoading,
 }) {
   const res = currentItems.map((item) => (
     <tr
@@ -34,24 +36,29 @@ export default function TableClients({
   ));
   return (
     <div className={styles.block}>
-      <table className={styles.table}>
-        <thead className={styles.header}>
-          <tr className={styles.header__row}>
-            <td className={styles.header__data}>Номер карты</td>
-            <td className={styles.header__data}>Дата регистрации</td>
-            <td className={styles.header__data}>Телефон</td>
-            <td className={styles.header__data}>Тип карты</td>
-            <td className={styles.header__data}>Почта</td>
-            <td className={styles.header__data}>Пол</td>
-            <td className={styles.header__data}>Фамилия</td>
-            <td className={styles.header__data}>Имя</td>
-            <td className={styles.header__data}>Дата рождения</td>
-            <td className={styles.header__data}>Бонусный баланс</td>
-            <td className={styles.header__data}>Примечание</td>
-          </tr>
-        </thead>
-        <tbody className={styles.content}>{res}</tbody>
-      </table>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <table className={styles.table}>
+          <thead className={styles.header}>
+            <tr className={styles.header__row}>
+              <td className={styles.header__data}>Номер карты</td>
+              <td className={styles.header__data}>Дата регистрации</td>
+              <td className={styles.header__data}>Телефон</td>
+              <td className={styles.header__data}>Тип карты</td>
+              <td className={styles.header__data}>Почта</td>
+              <td className={styles.header__data}>Пол</td>
+              <td className={styles.header__data}>Фамилия</td>
+              <td className={styles.header__data}>Имя</td>
+              <td className={styles.header__data}>Дата рождения</td>
+              <td className={styles.header__data}>Бонусный баланс</td>
+              <td className={styles.header__data}>Примечание</td>
+            </tr>
+          </thead>
+
+          <tbody className={styles.content}>{res}</tbody>
+        </table>
+      )}
       {paginateActivation ? (
         <nav className={styles.nav}>
           <button
