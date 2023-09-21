@@ -5,8 +5,9 @@ import Headline from "../Headline/Headline";
 import ButtonLK from "../ButtonLK/Button";
 import shape from "../../images/lk/shape.svg";
 import Card from "../Card/Card";
+import Loader from "../Loader/Loader";
 
-export default function Cards({ data }) {
+export default function Cards({ data, isLoading }) {
   const res = data.map((item) => (
     <Card
       type={item.name}
@@ -29,7 +30,7 @@ export default function Cards({ data }) {
           text="Создать карту"
         />
       </div>
-      <div className={styles.cards}>{res}</div>
+      {isLoading ? <Loader /> : <div className={styles.cards}>{res}</div>}
     </main>
   );
 }

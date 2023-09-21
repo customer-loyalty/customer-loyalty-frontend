@@ -12,12 +12,16 @@ import { api } from "../../utils/Api";
 import EditClient from "../EditClient/EditClient";
 
 function LKContainer() {
+  // данные пользователя
   const [clients, setClients] = useState([]);
   const [cards, setCards] = useState([]);
+  const [about, setAbout] = useState([]);
+  // управление попапами
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
   const [popupEditAccountActive, setPopupEditAccountActive] = useState(false);
 
+  // данные формы редактирования аккаунта
   const [check, setCheck] = useState("");
   const [surname, setSurname] = useState("");
   const [name, setName] = useState("");
@@ -26,6 +30,8 @@ function LKContainer() {
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
   const [id, setId] = useState("");
+  //
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api.authUser().then((res) => {
@@ -39,6 +45,7 @@ function LKContainer() {
       .then((res) => {
         // console.log(res);
         setClients(res);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -60,16 +67,16 @@ function LKContainer() {
     //   .catch((err) => {
     //     console.log(`Ошибка: ${err}`);
     //   });
-    // api
-    //   .getMe()
-    //   .then((user) => {
-    //     api.getUserAbout(user.username).then((res) => {
-    //       console.log(res);
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(`Ошибка: ${err}`);
-    //   });
+    api
+      .getMe()
+      .then((user) => {
+        api.getUserAbout(user.username).then((res) => {
+          setAbout(res);
+        });
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
     // api.getTable().then((res) => {
     //   console.log(res.table);
     // });
@@ -137,11 +144,20 @@ function LKContainer() {
               openPopupAddClient={openPopupAddClient}
               openPopupEditClient={openPopupEditClient}
               data={clients}
+              isLoading={isLoading}
             />
           }
         />
-        <Route path="/cards" element={<Cards data={cards} />} />
-        <Route path="/account" element={<Account openPopupEditAccount={openPopupEditAccount} closePopup={closePopup} popupEditAccountActive={popupEditAccountActive}/>} />
+        <Route
+          path="/cards"
+          element={<Cards data={cards} isLoading={isLoading} />}
+        />
+        <Route
+          path="/account"
+          element={
+            <Account about={about} cards={cards} isLoading={isLoading} openPopupEditAccount={openPopupEditAccount} closePopup={closePopup} popupEditAccountActive={popupEditAccountActive}/>
+          }
+        />
         <Route path="/mailing" element={<Mailing />} />
       </Routes>
     </div>

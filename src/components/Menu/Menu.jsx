@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import styles from "./menu.module.scss";
 import userImage from "../../images/user__image.jpg";
+import logo from "../../images/logo__icon.png";
 
 function Menu() {
   const location = useLocation();
@@ -61,9 +62,12 @@ function Menu() {
         style={{ rowGap: height < 760 && width > 390 && 20 }}
       >
         <div className={styles.logo}>
+          <img src={logo} alt="логотип сайта" className={styles.logo__icon} />
+        </div>
+        {/* <div className={styles.logo}>
           <div className={styles.logo__icon} />
           <p className={styles.logo__text}>LOGO</p>
-        </div>
+        </div> */}
         <div
           className={`${styles.user} ${
             !burgerImageVisible ? styles.menu__user_opacity : ""
@@ -146,12 +150,12 @@ function Menu() {
                 ${isDisplayNone ? styles.menu_none : ""}
                 `}
         >
-          <div className={styles.exit__container}>
+          <Link to="/" className={styles.exit__container}>
             <div className={styles.exit__icon} />
             <p className={`${styles.exit__text} ${styles.exit__text_exit}`}>
               Выйти
             </p>
-          </div>
+          </Link>
         </div>
         <div
           className={styles.menu__footer}
