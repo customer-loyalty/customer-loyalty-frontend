@@ -52,9 +52,14 @@
   column-gap: 20px;
   width: 240px;
   height: 60px;
+  cursor: pointer;
+  transition: 0.3s ease;
   @media screen and (max-width: 390px) {
     margin-left: calc(24px - 16px);
   }
+}
+.logo:hover {
+  opacity: 0.5;
 }
 // .logo__icon {
 //   background-image: url("../../images/logo__icon.png");

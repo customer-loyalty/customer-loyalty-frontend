@@ -9,7 +9,12 @@ import contacts from "../../images/lk/contacts.svg";
 import card from "../../images/lk/card.jpg";
 import Loader from "../Loader/Loader";
 
-export default function Account({ about, cards, isLoading }) {
+export default function Account({
+  about,
+  cards,
+  isLoading,
+  openPopupEditAccount,
+}) {
   const res = cards.map((item) => (
     <li className={styles.info__point} key={item.id}>
       Уровень {item.id}
@@ -25,6 +30,7 @@ export default function Account({ about, cards, isLoading }) {
           style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
           hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
           text="Редактировать"
+          onClick={openPopupEditAccount}
         />
       </div>
       {isLoading ? (
