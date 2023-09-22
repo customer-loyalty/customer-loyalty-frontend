@@ -7,9 +7,12 @@ import Clients from "../Clients/Clients";
 import Account from "../Account/Account";
 import Mailing from "../Mailing/Mailing";
 import Popup from "../Popup/Popup";
+import PopupCard from "../PopupCard/PopupCard";
 import AddClient from "../AddClient/AddClient";
 import { api } from "../../utils/Api";
 import EditClient from "../EditClient/EditClient";
+import AddCard from "../AddCard/AddCard";
+import EditAccount from "../EditAccount/EditAccount";
 
 function LKContainer() {
   // данные пользователя
@@ -19,6 +22,8 @@ function LKContainer() {
   // управление попапами
   const [popupAddClientActive, setPopupAddClientActive] = useState(false);
   const [popupEditClientActive, setPopupEditClientActive] = useState(false);
+  const [popupAddCardActive, setPopupAddCardActive] = useState(false);
+  const [popupEditAccountActive, setPopupEditAccountActive] = useState(false);
   // данные формы редактирования аккаунта
   const [check, setCheck] = useState("");
   const [surname, setSurname] = useState("");
@@ -42,7 +47,7 @@ function LKContainer() {
       .getClients()
       .then((res) => {
         // console.log(res);
-        setClients(res);
+        setClients(res.reverse());
         setIsLoading(false);
       })
       .catch((err) => {
@@ -82,9 +87,17 @@ function LKContainer() {
   const closePopup = () => {
     setPopupAddClientActive(false);
     setPopupEditClientActive(false);
+    setPopupAddCardActive(false);
+    setPopupEditAccountActive(false);
   };
   const openPopupAddClient = () => {
     setPopupAddClientActive(true);
+  };
+  const openPopupAddCard = () => {
+    setPopupAddCardActive(true);
+  };
+  const openPopupEditAccount = () => {
+    setPopupEditAccountActive(true);
   };
   const openPopupEditClient = (e) => {
     api.getClientId(e.target.parentNode.id).then((res) => {
@@ -107,6 +120,18 @@ function LKContainer() {
           popupAddClientActive={popupAddClientActive}
         />
       </Popup>
+      <PopupCard popupActive={popupAddCardActive} closePopup={closePopup}>
+        <AddCard
+          closePopup={closePopup}
+          popupAddCardActive={popupAddCardActive}
+        />
+      </PopupCard>
+      <PopupCard popupActive={popupEditAccountActive} closePopup={closePopup}>
+        <EditAccount
+          closePopup={closePopup}
+          popupEditAccountActive={popupEditAccountActive}
+        />
+      </PopupCard>
       <Popup popupActive={popupEditClientActive} closePopup={closePopup}>
         <EditClient
           closePopup={closePopup}
@@ -143,12 +168,23 @@ function LKContainer() {
         />
         <Route
           path="/cards"
-          element={<Cards data={cards} isLoading={isLoading} />}
+          element={
+            <Cards
+              openPopupAddCard={openPopupAddCard}
+              data={cards}
+              isLoading={isLoading}
+            />
+          }
         />
         <Route
           path="/account"
           element={
-            <Account about={about} cards={cards} isLoading={isLoading} />
+            <Account
+              about={about}
+              cards={cards}
+              isLoading={isLoading}
+              openPopupEditAccount={openPopupEditAccount}
+            />
           }
         />
         <Route path="/mailing" element={<Mailing />} />

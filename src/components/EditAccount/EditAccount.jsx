@@ -1,26 +1,15 @@
 import React, { useState } from "react";
-import styles from "./AddClient.module.scss";
-import { api } from "../../utils/Api";
+import styles from "./EditAccount.module.scss";
 
-function AddCard({ popupAddClientActive, closePopup }) {
+function EditAccount({ popupEditAccountActive, closePopup }) {
   const [check, setCheck] = useState("");
   const [surname, setSurname] = useState("");
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
-  const [note, setNote] = useState("");
-  const reg = new Date();
   function handleSubmit(e) {
     e.preventDefault();
-    api
-      .postClient(check, surname, name, birthday, mail, reg, `/+${phone}`, note)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      });
     closePopup();
   }
   function handleCheckChange(e) {
@@ -41,28 +30,20 @@ function AddCard({ popupAddClientActive, closePopup }) {
   function handlePhoneChange(e) {
     setPhone(e.target.value);
   }
-  function handleNoteChange(e) {
-    setNote(e.target.value);
-  }
   return (
     <div
-      className={popupAddClientActive ? styles.section_active : styles.section}
+      className={
+        popupEditAccountActive ? styles.section_active : styles.section
+      }
     >
-      <h1 className={styles.heading}>Добавление нового клиента</h1>
-      <p className={styles.userInfo}>
-        Дата регистрации:{" "}
-        <span className={styles.userInfo_bold}>31 авг. 2023</span>
-      </p>
-      <p className={styles.userInfo}>
-        Номер карты: <span className={styles.userInfo_bold}>0004</span>
-      </p>
+      <h1 className={styles.heading}>Редактирование аккаунта</h1>
       <form className={styles.form} id="formAddClient">
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Сумма чека, ₽ *</p>
+          <p className={styles.titleInput}>Название компании</p>
           <input
             type="number"
             className={styles.input}
-            placeholder="Введите сумму чека"
+            placeholder="Введите название компании"
             name="check"
             value={check}
             onChange={handleCheckChange}
@@ -70,11 +51,11 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Фамилия *</p>
+          <p className={styles.titleInput}>Основной вид деятельности</p>
           <input
             type="text"
             className={styles.input}
-            placeholder="Введите фамилию клиента"
+            placeholder="Введите вид деятельности"
             name="surname"
             value={surname}
             onChange={handleSurnameChange}
@@ -82,11 +63,11 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Имя *</p>
+          <p className={styles.titleInput}>Адрес</p>
           <input
             type="text"
             className={styles.input}
-            placeholder="Введите имя клиента"
+            placeholder="Введите адрес"
             name="name"
             value={name}
             onChange={handleNameChange}
@@ -94,11 +75,11 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Дата рождения *</p>
+          <p className={styles.titleInput}>ФИО</p>
           <input
-            type="data"
+            type="text"
             className={styles.input}
-            placeholder="__.__.____"
+            placeholder="Введите ФИО"
             name="birthday"
             value={birthday}
             onChange={handleBirthdayChange}
@@ -106,11 +87,11 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Почта *</p>
+          <p className={styles.titleInput}>Должность</p>
           <input
-            type="email"
+            type="text"
             className={styles.input}
-            placeholder="Введите email"
+            placeholder="Введите должность"
             name="mail"
             value={mail}
             onChange={handleMailChange}
@@ -118,11 +99,11 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Номер телефона *</p>
+          <p className={styles.titleInput}>Почта</p>
           <input
-            type="number"
+            type="text"
             className={styles.input}
-            placeholder="+7 (___) ___-__-__"
+            placeholder="Введите почту"
             name="phone"
             value={phone}
             onChange={handlePhoneChange}
@@ -130,14 +111,15 @@ function AddCard({ popupAddClientActive, closePopup }) {
           />
         </div>
         <div className={styles.formElementContainer}>
-          <p className={styles.titleInput}>Примечание</p>
+          <p className={styles.titleInput}>Сайт</p>
           <input
             type="text"
             className={styles.input}
-            placeholder="Оставьте заметки о клиенте"
-            name="note"
-            value={note}
-            onChange={handleNoteChange}
+            placeholder="Введите сайт"
+            name="phone"
+            value={phone}
+            onChange={handlePhoneChange}
+            required
           />
         </div>
       </form>
@@ -159,4 +141,4 @@ function AddCard({ popupAddClientActive, closePopup }) {
   );
 }
 
-export default AddCard;
+export default EditAccount;

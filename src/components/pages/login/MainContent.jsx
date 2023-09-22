@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useInput from "../../../hooks/useInput";
 
 function MainContent() {
@@ -18,7 +19,7 @@ function MainContent() {
     },
     {
       id: 2,
-      title: "Придумайте пароль",
+      title: "Пароль",
       onChange: (e) => {
         setPassword(e);
       },
@@ -35,15 +36,15 @@ function MainContent() {
   return (
     <div className="pt-[160px] max-w-[1920px] mx-auto flex justify-center">
       <div className="max-w-[692px]">
-        <h1 className="text-4xl font-bold text-[#F6F7F8] mb-10 text-center">
+        <h1 className="font-bold text-6xl font-500 text-[#F6F7F8] mb-40 text-center">
           Вход в аккаунт
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-1 max-w-[580px] pb-[122px]"
+          className="flex flex-col gap-1 max-w-[580px] pb-20"
         >
           {data.map((item) => (
-            <div key={item.id}>
+            <div className="mb-8" key={item.id}>
               <p className="text-[14px] font-normal leading-[21px] text-[#F6F7F8] mb-1">
                 {item.title}
               </p>
@@ -57,14 +58,21 @@ function MainContent() {
               />
             </div>
           ))}
-
-          <button
-            type="submit"
-            className="text-lg font-medium text-[#F6F7F8] w-full h-[60px] flex items-center justify-center bg-[#5CA1EA] rounded-[10px]"
-          >
-            Войти
-          </button>
+          <Link to="/lk/clients">
+            <button
+              type="submit"
+              className="text-lg font-medium text-[#F6F7F8] w-full h-[60px] flex items-center justify-center bg-[#5CA1EA] rounded-[10px] mt-[137px]"
+            >
+              Войти
+            </button>
+          </Link>
         </form>
+        <Link
+          to="/register"
+          className="text-[14px] font-normal leading-[21px] text-[#F6F7F8] justify-center flex cursor-pointer"
+        >
+          нет аккаунта? зарегистрироваться
+        </Link>
       </div>
     </div>
   );

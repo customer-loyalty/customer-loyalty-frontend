@@ -7,7 +7,7 @@ import shape from "../../images/lk/shape.svg";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 
-export default function Cards({ data, isLoading }) {
+export default function Cards({ data, isLoading, openPopupAddCard }) {
   const res = data.map((item) => (
     <Card
       type={item.name}
@@ -28,6 +28,7 @@ export default function Cards({ data, isLoading }) {
           style={{ backgroundColor: "#5CA1EA", color: "#FFFFFF" }}
           hoverStyle={{ backgroundColor: "#384098", color: "#FFFFFF" }}
           text="Создать карту"
+          onClick={openPopupAddCard}
         />
       </div>
       {isLoading ? <Loader /> : <div className={styles.cards}>{res}</div>}
